@@ -61,7 +61,7 @@ const SplashScreen = ({navigation}: SplashScreenProp) => {
   };
 
   const _onDone = () => {
-    navigation.navigate('Home');
+    navigation.navigate('Signin');
   };
 
   return (
