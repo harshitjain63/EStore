@@ -11,6 +11,8 @@ type ImageProp = {
   googleicon: ImageSourcePropType;
   // eslint-disable-next-line @typescript-eslint/no-require-imports
   backarrowicon: ImageSourcePropType;
+  // eslint-disable-next-line @typescript-eslint/no-require-imports
+  circleicon: ImageSourcePropType;
 };
 export const Images: ImageProp = {
   // eslint-disable-next-line @typescript-eslint/no-require-imports
@@ -23,4 +25,6 @@ export const Images: ImageProp = {
   googleicon: require('../assets/search.png'),
   // eslint-disable-next-line @typescript-eslint/no-require-imports
   backarrowicon: require('../assets/chevron.png'),
+  // eslint-disable-next-line @typescript-eslint/no-require-imports
+  circleicon: require('../assets/circle.png'),
 };

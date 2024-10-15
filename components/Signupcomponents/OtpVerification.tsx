@@ -30,7 +30,9 @@ const OtpVerification = ({navigation}: SignUpScreenProp) => {
           focusedPinCodeContainerStyle: styles.activePinCodeContainer,
         }}
       />
-      <TouchableOpacity style={styles.signinbutton}>
+      <TouchableOpacity
+        style={styles.signinbutton}
+        onPress={() => navigation.navigate('Welcome')}>
         <Text style={styles.signinbuttontext}>CONTINUE</Text>
       </TouchableOpacity>
 
@@ -72,8 +74,8 @@ const styles = StyleSheet.create({
     marginHorizontal: '10%',
   },
   pinCodeContainer: {
-    height: '18%',
-    width: '15%',
+    height: 45,
+    width: 45,
     borderRadius: 3,
     backgroundColor: '#FFFFFF',
   },

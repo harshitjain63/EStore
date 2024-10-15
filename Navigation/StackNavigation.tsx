@@ -6,12 +6,14 @@ import SplashScreen from '../Screens/SplashScreen';
 import HomeScreen from '../Screens/HomeScreen';
 import SignInScreen from '../Screens/SignInScreen';
 import SignUpScreen from '../Screens/SignUpScreen';
+import WelcomeSwitchAccountScreen from '../Screens/WelcomeSwitchAccountScreen';
 
 export type RootStackParams = {
   Home: undefined;
   Splash: undefined;
   Signin: undefined;
   Signup: undefined;
+  Welcome: undefined;
 };
 
 const stack = createNativeStackNavigator<RootStackParams>();
@@ -44,6 +46,11 @@ const StackNavigator = () => {
           options={{headerShown: false}}
           name="Signup"
           component={SignUpScreen}
+        />
+        <stack.Screen
+          options={{headerShown: false}}
+          name="Welcome"
+          component={WelcomeSwitchAccountScreen}
         />
       </stack.Navigator>
     </NavigationContainer>

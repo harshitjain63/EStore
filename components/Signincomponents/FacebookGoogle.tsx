@@ -42,7 +42,7 @@ const styles = StyleSheet.create({
     position: 'absolute',
     height: '6%',
     alignSelf: 'center',
-    borderColor: 'grey',
+    borderColor: '#DDDDDD',
   },
   google: {
     backgroundColor: 'white',
@@ -54,7 +54,7 @@ const styles = StyleSheet.create({
     position: 'absolute',
     height: '6%',
     alignSelf: 'center',
-    borderColor: 'grey',
+    borderColor: '#DDDDDD',
   },
   img: {
     height: '9%',
