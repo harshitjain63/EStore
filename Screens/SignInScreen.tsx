@@ -10,8 +10,15 @@ import Header from '../components/Signincomponents/Header';
 import Middle from '../components/Signincomponents/Middle';
 
 import FacebookGoogle from '../components/Signincomponents/FacebookGoogle';
+import {NativeStackScreenProps} from '@react-navigation/native-stack';
+import {RootStackParams} from '../Navigation/StackNavigation';
 
-const SignInScreen = () => {
+export type SignInScreenProp = NativeStackScreenProps<
+  RootStackParams,
+  'Signin'
+>;
+
+const SignInScreen = ({navigation}: SignInScreenProp) => {
   return (
     <KeyboardAvoidingView
       style={styles.maincontainer}
@@ -27,7 +34,13 @@ const SignInScreen = () => {
         <View style={styles.minicontainer}>
           <Text style={styles.txt}>
             Don&apos;t have an account?{' '}
-            <Text style={styles.signuptxt}>Signup</Text>
+            <Text
+              style={styles.signuptxt}
+              onPress={() => {
+                navigation.navigate('Signup');
+              }}>
+              Signup
+            </Text>
           </Text>
         </View>
         <FacebookGoogle />

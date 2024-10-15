@@ -5,11 +5,13 @@ import {StatusBar} from 'react-native';
 import SplashScreen from '../Screens/SplashScreen';
 import HomeScreen from '../Screens/HomeScreen';
 import SignInScreen from '../Screens/SignInScreen';
+import SignUpScreen from '../Screens/SignUpScreen';
 
 export type RootStackParams = {
   Home: undefined;
   Splash: undefined;
   Signin: undefined;
+  Signup: undefined;
 };
 
 const stack = createNativeStackNavigator<RootStackParams>();
@@ -37,6 +39,11 @@ const StackNavigator = () => {
           options={{headerShown: false}}
           name="Signin"
           component={SignInScreen}
+        />
+        <stack.Screen
+          options={{headerShown: false}}
+          name="Signup"
+          component={SignUpScreen}
         />
       </stack.Navigator>
     </NavigationContainer>

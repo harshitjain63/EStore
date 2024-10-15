@@ -9,6 +9,8 @@ type ImageProp = {
   facebookicon: ImageSourcePropType;
   // eslint-disable-next-line @typescript-eslint/no-require-imports
   googleicon: ImageSourcePropType;
+  // eslint-disable-next-line @typescript-eslint/no-require-imports
+  backarrowicon: ImageSourcePropType;
 };
 export const Images: ImageProp = {
   // eslint-disable-next-line @typescript-eslint/no-require-imports
@@ -19,4 +21,6 @@ export const Images: ImageProp = {
   facebookicon: require('../assets/facebook.png'),
   // eslint-disable-next-line @typescript-eslint/no-require-imports
   googleicon: require('../assets/search.png'),
+  // eslint-disable-next-line @typescript-eslint/no-require-imports
+  backarrowicon: require('../assets/chevron.png'),
 };
