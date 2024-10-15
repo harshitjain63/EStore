@@ -7,6 +7,7 @@ import HomeScreen from '../Screens/HomeScreen';
 import SignInScreen from '../Screens/SignInScreen';
 import SignUpScreen from '../Screens/SignUpScreen';
 import WelcomeSwitchAccountScreen from '../Screens/WelcomeSwitchAccountScreen';
+import MainTabNavigator from './BottomNavigation';
 
 export type RootStackParams = {
   Home: undefined;
@@ -14,6 +15,8 @@ export type RootStackParams = {
   Signin: undefined;
   Signup: undefined;
   Welcome: undefined;
+
+  BottomNavigation: undefined;
 };
 
 const stack = createNativeStackNavigator<RootStackParams>();
@@ -51,6 +54,11 @@ const StackNavigator = () => {
           options={{headerShown: false}}
           name="Welcome"
           component={WelcomeSwitchAccountScreen}
+        />
+        <stack.Screen
+          options={{headerShown: false}}
+          name="BottomNavigation"
+          component={MainTabNavigator}
         />
       </stack.Navigator>
     </NavigationContainer>

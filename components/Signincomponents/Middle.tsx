@@ -6,8 +6,10 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import React, {useState} from 'react';
+import {SignInScreenProp} from '../../Screens/SignInScreen';
 
-const Middle = () => {
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+const Middle = ({navigation, route}: SignInScreenProp) => {
   const [borderColor, setBorderColor] = useState<string>('#ccc');
   const [borderColor2, setBorderColor2] = useState<string>('#ccc');
   return (
@@ -32,7 +34,9 @@ const Middle = () => {
         placeholderTextColor={'grey'}
         secureTextEntry
       />
-      <TouchableOpacity style={styles.signinbutton}>
+      <TouchableOpacity
+        style={styles.signinbutton}
+        onPress={() => navigation.navigate('Signup')}>
         <Text style={styles.signinbuttontext}>SIGN IN</Text>
       </TouchableOpacity>
     </View>

@@ -1,30 +1,25 @@
+/* eslint-disable @typescript-eslint/no-require-imports */
 import {ImageSourcePropType} from 'react-native';
 
 type ImageProp = {
-  // eslint-disable-next-line @typescript-eslint/no-require-imports
   ushericon: ImageSourcePropType;
-  // eslint-disable-next-line @typescript-eslint/no-require-imports
   arrowicon: ImageSourcePropType;
-  // eslint-disable-next-line @typescript-eslint/no-require-imports
   facebookicon: ImageSourcePropType;
-  // eslint-disable-next-line @typescript-eslint/no-require-imports
   googleicon: ImageSourcePropType;
-  // eslint-disable-next-line @typescript-eslint/no-require-imports
   backarrowicon: ImageSourcePropType;
-  // eslint-disable-next-line @typescript-eslint/no-require-imports
   circleicon: ImageSourcePropType;
+  homebottomicon: ImageSourcePropType;
+  settingbottomicon: ImageSourcePropType;
+  userbottomicon: ImageSourcePropType;
 };
 export const Images: ImageProp = {
-  // eslint-disable-next-line @typescript-eslint/no-require-imports
   ushericon: require('../assets/usher.png'),
-  // eslint-disable-next-line @typescript-eslint/no-require-imports
   arrowicon: require('../assets/arrow-right.png'),
-  // eslint-disable-next-line @typescript-eslint/no-require-imports
   facebookicon: require('../assets/facebook.png'),
-  // eslint-disable-next-line @typescript-eslint/no-require-imports
   googleicon: require('../assets/search.png'),
-  // eslint-disable-next-line @typescript-eslint/no-require-imports
   backarrowicon: require('../assets/chevron.png'),
-  // eslint-disable-next-line @typescript-eslint/no-require-imports
   circleicon: require('../assets/circle.png'),
+  homebottomicon: require('../assets/Bottomnavigateicon/home.png'),
+  settingbottomicon: require('../assets/Bottomnavigateicon/settingicon.png'),
+  userbottomicon: require('../assets/Bottomnavigateicon/usericon.png'),
 };

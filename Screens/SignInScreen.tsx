@@ -18,7 +18,7 @@ export type SignInScreenProp = NativeStackScreenProps<
   'Signin'
 >;
 
-const SignInScreen = ({navigation}: SignInScreenProp) => {
+const SignInScreen = ({navigation, route}: SignInScreenProp) => {
   return (
     <KeyboardAvoidingView
       style={styles.maincontainer}
@@ -26,7 +26,7 @@ const SignInScreen = ({navigation}: SignInScreenProp) => {
       keyboardVerticalOffset={Platform.OS === 'ios' ? 60 : 0}>
       <View style={styles.scrollview}>
         <Header />
-        <Middle />
+        <Middle navigation={navigation} route={route} />
         <View style={styles.container}>
           <Text style={styles.ortext}>-OR-</Text>
         </View>

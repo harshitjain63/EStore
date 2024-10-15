@@ -10,13 +10,13 @@ const Footer = ({navigation}: WelcomeScreenProp) => {
 
       <TouchableOpacity
         style={styles.signinbutton}
-        onPress={() => navigation.navigate('Welcome')}>
+        onPress={() => navigation.navigate('BottomNavigation')}>
         <Text style={styles.signinbuttontext}>CONTINUE AS JAMESON</Text>
       </TouchableOpacity>
 
       <TouchableOpacity
         style={styles.transparentsigninbutton}
-        onPress={() => navigation.navigate('Welcome')}>
+        onPress={() => navigation.navigate('Signup')}>
         <Text style={styles.transparentsigninbuttontext}>SWITCH ACCOUNT</Text>
       </TouchableOpacity>
 
@@ -96,6 +96,8 @@ const styles = StyleSheet.create({
     fontSize: 14,
     alignSelf: 'center',
     marginTop: '40%',
+    bottom: 0,
+    marginVertical: '5%',
   },
 });
 
