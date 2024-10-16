@@ -1,8 +1,9 @@
-import {View, StyleSheet, FlatList} from 'react-native';
+import {StyleSheet, FlatList, Dimensions} from 'react-native';
 import React, {useState} from 'react';
 import Header from './Discovercomponent/Header';
 import Body, {BodyProps} from './Discovercomponent/Body';
-import Footer from './Discovercomponent/Footer';
+import Footer, {BottomNavScreenProp} from './Discovercomponent/Footer';
+import {SafeAreaView} from 'react-native-safe-area-context';
 
 const sampleData = [
   {
@@ -77,7 +78,7 @@ const sampleData = [
   },
 ];
 
-const Discover = () => {
+const Discover = ({navigation}: {navigation: BottomNavScreenProp}) => {
   const [selectedCategory, setSelectedCategory] = useState<string>('All');
   const filteredcategories = sampleData.filter((item: BodyProps) =>
     selectedCategory === 'All' ? true : item.category === selectedCategory,
@@ -91,7 +92,7 @@ const Discover = () => {
     />
   );
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
       <Header
         selectedCategory={selectedCategory}
         setSelectedCategory={setSelectedCategory}
@@ -104,8 +105,8 @@ const Discover = () => {
         columnWrapperStyle={styles.row}
         showsVerticalScrollIndicator={false}
       />
-      <Footer />
-    </View>
+      <Footer navigation={navigation} />
+    </SafeAreaView>
   );
 };
 
@@ -114,6 +115,9 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     backgroundColor: '#FFFFFF',
+    height: '100%',
+    zIndex: 2,
+    width: Dimensions.get('window').width,
   },
   row: {
     paddingHorizontal: 10,

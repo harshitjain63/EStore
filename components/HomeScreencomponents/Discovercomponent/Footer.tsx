@@ -1,11 +1,20 @@
 import {View, Text, TouchableOpacity, StyleSheet} from 'react-native';
 import React from 'react';
+import {RootStackParams} from '../../../Navigation/StackNavigation';
+import {NavigationProp} from '@react-navigation/native';
 
-const Footer = () => {
+export type BottomNavScreenProp = NavigationProp<
+  RootStackParams,
+  'BottomNavigation'
+>;
+
+const Footer = ({navigation}: {navigation: BottomNavScreenProp}) => {
   return (
     <View style={styles.container}>
       <Text style={styles.txt}>No filters applied</Text>
-      <TouchableOpacity style={styles.btn}>
+      <TouchableOpacity
+        style={styles.btn}
+        onPress={() => navigation.navigate('Filter')}>
         <Text style={styles.txtbtn}>FILTER</Text>
       </TouchableOpacity>
     </View>

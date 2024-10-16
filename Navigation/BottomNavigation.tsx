@@ -13,85 +13,100 @@ const {width, height} = Dimensions.get('window');
 
 const MainTabNavigator = () => {
   return (
-    <Tab.Navigator
-      screenOptions={{
-        tabBarStyle: styles.container,
-        tabBarShowLabel: false,
-      }}>
-      <Tab.Screen
-        name="Discover"
-        component={Discover}
-        options={{
-          tabBarIcon: ({focused}) => (
-            <View style={styles.middlecontainer}>
-              <Image source={Images.homebottomicon} style={styles.img} />
-              {focused && (
-                <Text
-                  style={[styles.txt, {color: focused ? '#FA4248' : 'black'}]}>
-                  Home
-                </Text>
-              )}
-            </View>
-          ),
-          headerShown: false,
-        }}
-      />
-      <Tab.Screen
-        name="Another"
-        component={Another}
-        options={{
-          tabBarIcon: ({focused}) => (
-            <View style={styles.middlecontainer}>
-              <Image source={Images.bottomicon} style={styles.extraimg} />
-              {focused && (
-                <Text
-                  style={[styles.txt, {color: focused ? '#FA4248' : 'black'}]}>
-                  Another
-                </Text>
-              )}
-            </View>
-          ),
-        }}
-      />
-      <Tab.Screen
-        name="Setting"
-        component={Setting}
-        options={{
-          tabBarIcon: ({focused}) => (
-            <View style={styles.middlecontainer}>
-              <Image source={Images.settingbottomicon} style={styles.img} />
-              {focused && (
-                <Text
-                  style={[styles.txt, {color: focused ? '#FA4248' : 'black'}]}>
-                  Setting
-                </Text>
-              )}
-            </View>
-          ),
-        }}
-      />
-      <Tab.Screen
-        name="User"
-        component={User}
-        options={{
-          tabBarIcon: ({focused}) => (
-            <View style={styles.middlecontainer}>
-              <Image source={Images.userbottomicon} style={styles.img} />
-              {focused && (
-                <Text
-                  style={[styles.txt, {color: focused ? '#FA4248' : 'black'}]}>
-                  User
-                </Text>
-              )}
-            </View>
-          ),
-        }}
-      />
-    </Tab.Navigator>
+    <View style={styles.wrapper}>
+      <Tab.Navigator
+        screenOptions={{
+          tabBarStyle: styles.container,
+          tabBarShowLabel: false,
+        }}>
+        <Tab.Screen
+          name="Discover"
+          component={Discover}
+          options={{
+            tabBarIcon: ({focused}) => (
+              <View style={styles.middlecontainer}>
+                <Image source={Images.homebottomicon} style={styles.img} />
+                {focused && (
+                  <Text
+                    style={[
+                      styles.txt,
+                      {color: focused ? '#FA4248' : 'black'},
+                    ]}>
+                    Home
+                  </Text>
+                )}
+              </View>
+            ),
+            headerShown: false,
+          }}
+        />
+        <Tab.Screen
+          name="Another"
+          component={Another}
+          options={{
+            tabBarIcon: ({focused}) => (
+              <View style={styles.middlecontainer}>
+                <Image source={Images.bottomicon} style={styles.extraimg} />
+                {focused && (
+                  <Text
+                    style={[
+                      styles.txt,
+                      {color: focused ? '#FA4248' : 'black'},
+                    ]}>
+                    Another
+                  </Text>
+                )}
+              </View>
+            ),
+          }}
+        />
+        <Tab.Screen
+          name="Setting"
+          component={Setting}
+          options={{
+            tabBarIcon: ({focused}) => (
+              <View style={styles.middlecontainer}>
+                <Image source={Images.settingbottomicon} style={styles.img} />
+                {focused && (
+                  <Text
+                    style={[
+                      styles.txt,
+                      {color: focused ? '#FA4248' : 'black'},
+                    ]}>
+                    Setting
+                  </Text>
+                )}
+              </View>
+            ),
+          }}
+        />
+        <Tab.Screen
+          name="User"
+          component={User}
+          options={{
+            tabBarIcon: ({focused}) => (
+              <View style={styles.middlecontainer}>
+                <Image source={Images.userbottomicon} style={styles.img} />
+                {focused && (
+                  <Text
+                    style={[
+                      styles.txt,
+                      {color: focused ? '#FA4248' : 'black'},
+                    ]}>
+                    User
+                  </Text>
+                )}
+              </View>
+            ),
+          }}
+        />
+      </Tab.Navigator>
+    </View>
   );
 };
 
 const styles = StyleSheet.create({
+  wrapper: {flex: 1, backgroundColor: '#FFFF'},
   container: {
     height: 70,
     backgroundColor: '#FFFFFF',
@@ -100,11 +115,12 @@ const styles = StyleSheet.create({
     borderTopEndRadius: 45,
     borderTopStartRadius: 45,
     borderColor: '#FA4248',
-    width: '100%',
     paddingBottom: 10,
     justifyContent: 'center',
     paddingHorizontal: 10,
     marginVertical: -2,
+    elevation: 0,
+    zIndex: 1,
   },
   img: {
     height: height * 0.035,

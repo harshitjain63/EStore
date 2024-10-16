@@ -8,6 +8,7 @@ import SignInScreen from '../Screens/SignInScreen';
 import SignUpScreen from '../Screens/SignUpScreen';
 import WelcomeSwitchAccountScreen from '../Screens/WelcomeSwitchAccountScreen';
 import MainTabNavigator from './BottomNavigation';
+import Filter from '../components/HomeScreencomponents/Discovercomponent/Filter';
 
 export type RootStackParams = {
   Home: undefined;
@@ -15,7 +16,7 @@ export type RootStackParams = {
   Signin: undefined;
   Signup: undefined;
   Welcome: undefined;
-
+  Filter: undefined;
   BottomNavigation: undefined;
 };
 
@@ -59,6 +60,11 @@ const StackNavigator = () => {
           options={{headerShown: false}}
           name="BottomNavigation"
           component={MainTabNavigator}
+        />
+        <stack.Screen
+          options={{headerShown: false}}
+          name="Filter"
+          component={Filter}
         />
       </stack.Navigator>
     </NavigationContainer>
