@@ -33,6 +33,7 @@ const MainTabNavigator = () => {
               )}
             </View>
           ),
+          headerShown: false,
         }}
       />
       <Tab.Screen
@@ -41,11 +42,11 @@ const MainTabNavigator = () => {
         options={{
           tabBarIcon: ({focused}) => (
             <View style={styles.middlecontainer}>
-              <Image source={Images.homebottomicon} style={styles.img} />
+              <Image source={Images.bottomicon} style={styles.extraimg} />
               {focused && (
                 <Text
                   style={[styles.txt, {color: focused ? '#FA4248' : 'black'}]}>
-                  Home
+                  Another
                 </Text>
               )}
             </View>
@@ -92,14 +93,18 @@ const MainTabNavigator = () => {
 
 const styles = StyleSheet.create({
   container: {
-    height: 67,
-    backgroundColor: 'white',
+    height: 70,
+    backgroundColor: '#FFFFFF',
     borderTopWidth: 1.2,
+    borderWidth: 1.2,
+    borderTopEndRadius: 45,
+    borderTopStartRadius: 45,
     borderColor: '#FA4248',
     width: '100%',
     paddingBottom: 10,
     justifyContent: 'center',
     paddingHorizontal: 10,
+    marginVertical: -2,
   },
   img: {
     height: height * 0.035,
@@ -114,6 +119,11 @@ const styles = StyleSheet.create({
   },
   txt: {
     color: 'black',
+  },
+  extraimg: {
+    height: 40,
+    width: 50,
+    resizeMode: 'contain',
   },
 });
 

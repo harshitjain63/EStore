@@ -11,6 +11,12 @@ type ImageProp = {
   homebottomicon: ImageSourcePropType;
   settingbottomicon: ImageSourcePropType;
   userbottomicon: ImageSourcePropType;
+  bottomicon: ImageSourcePropType;
+  searchicon: ImageSourcePropType;
+  menuicon: ImageSourcePropType;
+  shoppingicon: ImageSourcePropType;
+  emptyheart: ImageSourcePropType;
+  filledheart: ImageSourcePropType;
 };
 export const Images: ImageProp = {
   ushericon: require('../assets/usher.png'),
@@ -22,4 +28,10 @@ export const Images: ImageProp = {
   homebottomicon: require('../assets/Bottomnavigateicon/home.png'),
   settingbottomicon: require('../assets/Bottomnavigateicon/settingicon.png'),
   userbottomicon: require('../assets/Bottomnavigateicon/usericon.png'),
+  bottomicon: require('../assets/Bottomnavigateicon/bottomicon.png'),
+  searchicon: require('../assets/Bottomnavigateicon/searchicon.png'),
+  menuicon: require('../assets/Bottomnavigateicon/menu.png'),
+  shoppingicon: require('../assets/bag.png'),
+  emptyheart: require('../assets/Bottomnavigateicon/heart.png'),
+  filledheart: require('../assets/Bottomnavigateicon/fillheart.png'),
 };
