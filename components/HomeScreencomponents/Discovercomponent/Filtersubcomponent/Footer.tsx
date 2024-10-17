@@ -1,15 +1,14 @@
 import {View, Text, TouchableOpacity, StyleSheet} from 'react-native';
 import React from 'react';
-import {NewNavScreenProp} from './Header';
 
-const Footer = ({navigation}: {navigation: NewNavScreenProp}) => {
+const Footer = () => {
   return (
     <View style={styles.container}>
-      <Text style={styles.txt}>No filters applied</Text>
-      <TouchableOpacity
-        style={styles.btn}
-        onPress={() => navigation.navigate('Filter')}>
-        <Text style={styles.txtbtn}>FILTER</Text>
+      <TouchableOpacity style={styles.btn1}>
+        <Text style={styles.txtbtn1}>CLEAR</Text>
+      </TouchableOpacity>
+      <TouchableOpacity style={styles.btn}>
+        <Text style={styles.txtbtn}>APPLY</Text>
       </TouchableOpacity>
     </View>
   );
@@ -37,6 +36,21 @@ const styles = StyleSheet.create({
     paddingRight: 50,
     paddingTop: 15,
     paddingBottom: 15,
+  },
+  txtbtn1: {
+    color: 'black',
+    fontSize: 16,
+    fontWeight: 'bold',
+    paddingLeft: 50,
+    paddingRight: 50,
+    paddingTop: 15,
+    paddingBottom: 15,
+  },
+  btn1: {
+    borderRadius: 50,
+    backgroundColor: '#FFFFFF',
+    borderWidth: 1,
+    borderColor: '#FA4248',
   },
   btn: {
     borderRadius: 50,

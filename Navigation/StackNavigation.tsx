@@ -62,7 +62,9 @@ const StackNavigator = () => {
           component={MainTabNavigator}
         />
         <stack.Screen
-          options={{headerShown: false}}
+          options={{
+            headerShown: false,
+          }}
           name="Filter"
           component={Filter}
         />

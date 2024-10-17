@@ -2,10 +2,10 @@ import React from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {View, Text, Image, StyleSheet, Dimensions} from 'react-native';
 import {Images} from '../constants/Image';
-import Discover from '../components/HomeScreencomponents/Discover';
 import Setting from '../components/HomeScreencomponents/Setting';
 import User from '../components/HomeScreencomponents/User';
 import Another from '../components/HomeScreencomponents/Another';
+import NewNavigation from './NewNavigation';
 
 const Tab = createBottomTabNavigator();
 
@@ -20,8 +20,8 @@ const MainTabNavigator = () => {
           tabBarShowLabel: false,
         }}>
         <Tab.Screen
-          name="Discover"
-          component={Discover}
+          name="NewNav"
+          component={NewNavigation}
           options={{
             tabBarIcon: ({focused}) => (
               <View style={styles.middlecontainer}>

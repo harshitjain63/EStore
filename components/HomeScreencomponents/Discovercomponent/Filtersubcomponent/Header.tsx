@@ -1,23 +1,10 @@
 import {View, Text, Image, StyleSheet, TouchableOpacity} from 'react-native';
-import React from 'react';
-import {Images} from '../../../constants/Image';
-import {NewNavParams} from '../../../Navigation/NewNavigation';
-import {NavigationProp} from '@react-navigation/native';
-
-type categoryprop = {
-  selectedCategory: string;
-  setSelectedCategory: (arg: string) => void;
-  navigation: NewNavScreenProp;
-};
-
-export type NewNavScreenProp = NavigationProp<NewNavParams, 'Search'>;
+import React, {useState} from 'react';
+import {Images} from '../../../../constants/Image';
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-const Header = ({
-  selectedCategory,
-  setSelectedCategory,
-  navigation,
-}: categoryprop) => {
+const Header = () => {
+  const [selectedCategory, setSelectedCategory] = useState<string>('All');
   const categories = ['All', 'Women', 'Men', 'Best Sellers'];
 
   return (
@@ -26,8 +13,8 @@ const Header = ({
         <TouchableOpacity>
           <Image style={styles.img} source={Images.menuicon} />
         </TouchableOpacity>
-        <Text style={styles.discovertxt}>Discover</Text>
-        <TouchableOpacity onPress={() => navigation.navigate('Search')}>
+        <Text style={styles.discovertxt}>Filter</Text>
+        <TouchableOpacity>
           <Image style={styles.img} source={Images.searchicon} />
         </TouchableOpacity>
       </View>

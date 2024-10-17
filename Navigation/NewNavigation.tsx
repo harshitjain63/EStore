@@ -1,0 +1,52 @@
+import React from 'react';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
+
+import Filter from '../components/HomeScreencomponents/Discovercomponent/Filter';
+import Discover from '../components/HomeScreencomponents/Discover';
+import Search from '../components/HomeScreencomponents/Discovercomponent/Search';
+import SearchResult from '../components/HomeScreencomponents/Discovercomponent/SearchResult';
+
+export type NewNavParams = {
+  Discover: undefined;
+  Search: undefined;
+  Searchresult: undefined;
+  Filter: undefined;
+};
+
+const stack = createNativeStackNavigator<NewNavParams>();
+
+const NewNavigation = () => {
+  return (
+    <stack.Navigator
+      screenOptions={{
+        animation: 'slide_from_right',
+      }}>
+      <stack.Screen
+        options={{headerShown: false}}
+        name="Discover"
+        component={Discover}
+      />
+
+      <stack.Screen
+        options={{headerShown: false}}
+        name="Search"
+        component={Search}
+      />
+      <stack.Screen
+        options={{headerShown: false}}
+        name="Searchresult"
+        component={SearchResult}
+      />
+
+      <stack.Screen
+        options={{
+          headerShown: false,
+        }}
+        name="Filter"
+        component={Filter}
+      />
+    </stack.Navigator>
+  );
+};
+
+export default NewNavigation;

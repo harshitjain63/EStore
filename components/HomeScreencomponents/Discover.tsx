@@ -1,8 +1,8 @@
 import {StyleSheet, FlatList, Dimensions} from 'react-native';
 import React, {useState} from 'react';
-import Header from './Discovercomponent/Header';
+import Header, {NewNavScreenProp} from './Discovercomponent/Header';
 import Body, {BodyProps} from './Discovercomponent/Body';
-import Footer, {BottomNavScreenProp} from './Discovercomponent/Footer';
+import Footer from './Discovercomponent/Footer';
 import {SafeAreaView} from 'react-native-safe-area-context';
 
 const sampleData = [
@@ -78,7 +78,7 @@ const sampleData = [
   },
 ];
 
-const Discover = ({navigation}: {navigation: BottomNavScreenProp}) => {
+const Discover = ({navigation}: {navigation: NewNavScreenProp}) => {
   const [selectedCategory, setSelectedCategory] = useState<string>('All');
   const filteredcategories = sampleData.filter((item: BodyProps) =>
     selectedCategory === 'All' ? true : item.category === selectedCategory,
@@ -96,6 +96,7 @@ const Discover = ({navigation}: {navigation: BottomNavScreenProp}) => {
       <Header
         selectedCategory={selectedCategory}
         setSelectedCategory={setSelectedCategory}
+        navigation={navigation}
       />
       <FlatList
         data={filteredcategories}
