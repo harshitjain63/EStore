@@ -19,6 +19,7 @@ type ImageProp = {
   filledheart: ImageSourcePropType;
   dropdownicon: ImageSourcePropType;
   filtericon: ImageSourcePropType;
+  crossicon: ImageSourcePropType;
 };
 export const Images: ImageProp = {
   ushericon: require('../assets/usher.png'),
@@ -38,4 +39,5 @@ export const Images: ImageProp = {
   filledheart: require('../assets/Bottomnavigateicon/fillheart.png'),
   dropdownicon: require('../assets/down.png'),
   filtericon: require('../assets/Bottomnavigateicon/filter.png'),
+  crossicon: require('../assets/Bottomnavigateicon/close.png'),
 };

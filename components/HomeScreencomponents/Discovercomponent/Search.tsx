@@ -3,11 +3,20 @@ import React from 'react';
 
 import {SafeAreaView} from 'react-native-safe-area-context';
 import Header from './seachsubcomponent/Header';
+import Body from './seachsubcomponent/Body';
+import {NewNavParams} from '../../../Navigation/NewNavigation';
+import {NativeStackScreenProps} from '@react-navigation/native-stack';
 
-const Search = () => {
+export type SearchresultScreenProp = NativeStackScreenProps<
+  NewNavParams,
+  'Search'
+>;
+
+const Search = ({navigation, route}: SearchresultScreenProp) => {
   return (
     <SafeAreaView style={styles.container}>
       <Header />
+      <Body navigation={navigation} route={route} />
     </SafeAreaView>
   );
 };
