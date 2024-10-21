@@ -5,7 +5,7 @@ import {Images} from '../constants/Image';
 import Setting from '../components/HomeScreencomponents/Setting';
 import User from '../components/HomeScreencomponents/User';
 import Another from '../components/HomeScreencomponents/Another';
-import NewNavigation from './NewNavigation';
+import DrawerNavigation from './DrawerNavigation';
 
 const Tab = createBottomTabNavigator();
 
@@ -20,8 +20,8 @@ const MainTabNavigator = () => {
           tabBarShowLabel: false,
         }}>
         <Tab.Screen
-          name="NewNav"
-          component={NewNavigation}
+          name="Drawer"
+          component={DrawerNavigation}
           options={{
             tabBarIcon: ({focused}) => (
               <View style={styles.middlecontainer}>

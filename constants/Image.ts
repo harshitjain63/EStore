@@ -20,6 +20,7 @@ type ImageProp = {
   dropdownicon: ImageSourcePropType;
   filtericon: ImageSourcePropType;
   crossicon: ImageSourcePropType;
+  forwardicon: ImageSourcePropType;
 };
 export const Images: ImageProp = {
   ushericon: require('../assets/usher.png'),
@@ -40,4 +41,5 @@ export const Images: ImageProp = {
   dropdownicon: require('../assets/down.png'),
   filtericon: require('../assets/Bottomnavigateicon/filter.png'),
   crossicon: require('../assets/Bottomnavigateicon/close.png'),
+  forwardicon: require('../assets/Bottomnavigateicon/next.png'),
 };

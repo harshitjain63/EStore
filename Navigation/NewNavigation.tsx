@@ -7,7 +7,7 @@ import Search from '../components/HomeScreencomponents/Discovercomponent/Search'
 import SearchResult from '../components/HomeScreencomponents/Discovercomponent/SearchResult';
 
 export type NewNavParams = {
-  Discover: undefined;
+  DiscoverHome: undefined;
   Search: undefined;
   Searchresult: undefined;
   Filter: undefined;
@@ -23,7 +23,7 @@ const NewNavigation = () => {
       }}>
       <stack.Screen
         options={{headerShown: false}}
-        name="Discover"
+        name="DiscoverHome"
         component={Discover}
       />
 

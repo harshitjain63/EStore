@@ -96,7 +96,6 @@ const Discover = ({navigation}: {navigation: NewNavScreenProp}) => {
       <Header
         selectedCategory={selectedCategory}
         setSelectedCategory={setSelectedCategory}
-        navigation={navigation}
       />
       <FlatList
         data={filteredcategories}

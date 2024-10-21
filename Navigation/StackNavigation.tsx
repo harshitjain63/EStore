@@ -7,8 +7,8 @@ import HomeScreen from '../Screens/HomeScreen';
 import SignInScreen from '../Screens/SignInScreen';
 import SignUpScreen from '../Screens/SignUpScreen';
 import WelcomeSwitchAccountScreen from '../Screens/WelcomeSwitchAccountScreen';
-import MainTabNavigator from './BottomNavigation';
 import Filter from '../components/HomeScreencomponents/Discovercomponent/Filter';
+import MainTabNavigator from './BottomNavigation';
 
 export type RootStackParams = {
   Home: undefined;

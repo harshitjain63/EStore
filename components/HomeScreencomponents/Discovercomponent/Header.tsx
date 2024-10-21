@@ -2,28 +2,31 @@ import {View, Text, Image, StyleSheet, TouchableOpacity} from 'react-native';
 import React from 'react';
 import {Images} from '../../../constants/Image';
 import {NewNavParams} from '../../../Navigation/NewNavigation';
-import {NavigationProp} from '@react-navigation/native';
+import {
+  DrawerActions,
+  NavigationProp,
+  useNavigation,
+} from '@react-navigation/native';
 
 type categoryprop = {
   selectedCategory: string;
   setSelectedCategory: (arg: string) => void;
-  navigation: NewNavScreenProp;
 };
 
 export type NewNavScreenProp = NavigationProp<NewNavParams, 'Search'>;
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-const Header = ({
-  selectedCategory,
-  setSelectedCategory,
-  navigation,
-}: categoryprop) => {
+const Header = ({selectedCategory, setSelectedCategory}: categoryprop) => {
   const categories = ['All', 'Women', 'Men', 'Best Sellers'];
+
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const navigation = useNavigation<any>();
 
   return (
     <View style={styles.container}>
       <View style={styles.header}>
-        <TouchableOpacity>
+        <TouchableOpacity
+          onPress={() => navigation.dispatch(DrawerActions.openDrawer())}>
           <Image style={styles.img} source={Images.menuicon} />
         </TouchableOpacity>
         <Text style={styles.discovertxt}>Discover</Text>
