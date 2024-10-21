@@ -7,7 +7,7 @@ import SelectedProduct from '../components/HomeScreencomponents/Discovercomponen
 export type CategoryNavParams = {
   category: undefined;
   selectedcategory: {name: string};
-  selectedproduct: {names: string};
+  selectedproduct: {name: string};
 };
 
 const stack = createNativeStackNavigator<CategoryNavParams>();

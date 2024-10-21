@@ -1,7 +1,8 @@
 import {Dimensions, StyleSheet, SafeAreaView, FlatList} from 'react-native';
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import Header from './categorysubcomponent/Header';
 import Collections from './categorysubcomponent/Collections';
+import CollectionsSkeleton from './categorysubcomponent/CollectionsSkeleton';
 
 const categories = [
   {
@@ -44,13 +45,30 @@ export type CollectionProps = {
 };
 
 const Category = () => {
-  const renderItem = ({item}: {item: CollectionProps}) => (
-    <Collections
-      name={item.name}
-      itemCount={item.itemCount}
-      image={item.image}
-    />
-  );
+  const [loading, setLoading] = useState<boolean>(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setLoading(false);
+    }, 3000);
+
+    return () => clearTimeout(timer);
+  }, []);
+
+  const renderItem = ({item}: {item: CollectionProps}) => {
+    if (loading) {
+      return <CollectionsSkeleton />;
+    }
+
+    return (
+      <Collections
+        name={item.name}
+        itemCount={item.itemCount}
+        image={item.image}
+      />
+    );
+  };
+
   return (
     <SafeAreaView style={styles.container}>
       <Header />

@@ -5,13 +5,15 @@ import {NavigationProp, useNavigation} from '@react-navigation/native';
 import {CategoryNavParams} from '../../../../Navigation/CategoryNavigation';
 
 export type CollectionsProps = {
-  names: string;
+  name: string;
   itemCount: number;
   image: string;
+  names: string;
 };
 
-const Collection = ({names, itemCount, image}: CollectionsProps) => {
+const Collection = ({name, itemCount, image, names}: CollectionsProps) => {
   const navigation = useNavigation<NavigationProp<CategoryNavParams>>();
+
   return (
     <View style={styles.container}>
       <Image source={{uri: image}} style={styles.images} />
@@ -20,7 +22,7 @@ const Collection = ({names, itemCount, image}: CollectionsProps) => {
           <Text style={styles.text}>{names}</Text>
           <TouchableOpacity
             style={styles.forward}
-            onPress={() => navigation.navigate('selectedproduct', {names})}>
+            onPress={() => navigation.navigate('selectedproduct', {name})}>
             <Image source={Images.forwardicon} style={styles.img} />
           </TouchableOpacity>
         </View>

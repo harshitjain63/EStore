@@ -1,9 +1,10 @@
 import {StyleSheet, FlatList, Dimensions} from 'react-native';
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import Header, {NewNavScreenProp} from './Discovercomponent/Header';
 import Body, {BodyProps} from './Discovercomponent/Body';
 import Footer from './Discovercomponent/Footer';
 import {SafeAreaView} from 'react-native-safe-area-context';
+import BodySkeleton from './Discovercomponent/BodySkeleton';
 
 const sampleData = [
   {
@@ -80,17 +81,35 @@ const sampleData = [
 
 const Discover = ({navigation}: {navigation: NewNavScreenProp}) => {
   const [selectedCategory, setSelectedCategory] = useState<string>('All');
+  const [loading, setLoading] = useState<boolean>(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setLoading(false);
+    }, 3000);
+
+    return () => clearTimeout(timer);
+  }, []);
+
   const filteredcategories = sampleData.filter((item: BodyProps) =>
     selectedCategory === 'All' ? true : item.category === selectedCategory,
   );
-  const renderItem = ({item}: {item: BodyProps}) => (
-    <Body
-      image={item.image}
-      name={item.name}
-      category={item.category}
-      price={item.price}
-    />
-  );
+
+  const renderItem = ({item}: {item: BodyProps}) => {
+    if (loading) {
+      return <BodySkeleton />;
+    }
+
+    return (
+      <Body
+        image={item.image}
+        name={item.name}
+        category={item.category}
+        price={item.price}
+      />
+    );
+  };
+
   return (
     <SafeAreaView style={styles.container}>
       <Header

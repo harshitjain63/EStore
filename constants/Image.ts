@@ -21,6 +21,7 @@ type ImageProp = {
   filtericon: ImageSourcePropType;
   crossicon: ImageSourcePropType;
   forwardicon: ImageSourcePropType;
+  welcome: ImageSourcePropType;
 };
 export const Images: ImageProp = {
   ushericon: require('../assets/usher.png'),
@@ -42,4 +43,5 @@ export const Images: ImageProp = {
   filtericon: require('../assets/Bottomnavigateicon/filter.png'),
   crossicon: require('../assets/Bottomnavigateicon/close.png'),
   forwardicon: require('../assets/Bottomnavigateicon/next.png'),
+  welcome: require('../assets/welcome.png'),
 };

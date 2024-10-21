@@ -1,9 +1,11 @@
 import {Dimensions, StyleSheet, FlatList, View} from 'react-native';
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import {RouteProp, useRoute} from '@react-navigation/native';
 import Header from './Selectedcategoriessubcomponent/Header';
 import {CategoryNavParams} from '../../../Navigation/CategoryNavigation';
 import Collection from './Selectedcategoriessubcomponent/Collection';
+import CollectionsSkeleton from './categorysubcomponent/CollectionsSkeleton';
+import HeaderSkeleton from './Selectedcategoriessubcomponent/HeaderSkeleton';
 
 const categories = [
   {
@@ -49,16 +51,34 @@ const SelectedCategory = () => {
   const route = useRoute<RouteProp<CategoryNavParams, 'selectedcategory'>>();
   const {name} = route.params;
 
-  const renderItem = ({item}: {item: CollectionProps}) => (
-    <Collection
-      names={item.names}
-      itemCount={item.itemCount}
-      image={item.image}
-    />
-  );
+  const [loading, setLoading] = useState<boolean>(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setLoading(false);
+    }, 3000);
+
+    return () => clearTimeout(timer);
+  }, []);
+
+  const renderItem = ({item}: {item: CollectionProps}) => {
+    if (loading) {
+      return <CollectionsSkeleton />;
+    }
+
+    return (
+      <Collection
+        name={name}
+        itemCount={item.itemCount}
+        image={item.image}
+        names={item.names}
+      />
+    );
+  };
+
   return (
     <View style={styles.container}>
-      <Header name={name} />
+      {loading ? <HeaderSkeleton /> : <Header name={name} />}
       <View
         style={{
           borderTopLeftRadius: 40,
