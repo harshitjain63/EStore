@@ -1,7 +1,7 @@
 import {Dimensions, StyleSheet, SafeAreaView, FlatList} from 'react-native';
 import React from 'react';
 import Header from './categorysubcomponent/Header';
-import Collection from './categorysubcomponent/Collection';
+import Collections from './categorysubcomponent/Collections';
 
 const categories = [
   {
@@ -45,11 +45,10 @@ export type CollectionProps = {
 
 const Category = () => {
   const renderItem = ({item}: {item: CollectionProps}) => (
-    <Collection
+    <Collections
       name={item.name}
       itemCount={item.itemCount}
       image={item.image}
-      isFirstItem={false}
     />
   );
   return (

@@ -2,10 +2,12 @@ import React from 'react';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import SelectedCategory from '../components/HomeScreencomponents/Discovercomponent/SelectedCategory';
 import Category from '../components/HomeScreencomponents/Discovercomponent/Category';
+import SelectedProduct from '../components/HomeScreencomponents/Discovercomponent/SelectedProduct';
 
 export type CategoryNavParams = {
   category: undefined;
   selectedcategory: {name: string};
+  selectedproduct: {names: string};
 };
 
 const stack = createNativeStackNavigator<CategoryNavParams>();
@@ -26,6 +28,11 @@ const CategoryNavigation = () => {
         options={{headerShown: false}}
         name="selectedcategory"
         component={SelectedCategory}
+      />
+      <stack.Screen
+        options={{headerShown: false}}
+        name="selectedproduct"
+        component={SelectedProduct}
       />
     </stack.Navigator>
   );

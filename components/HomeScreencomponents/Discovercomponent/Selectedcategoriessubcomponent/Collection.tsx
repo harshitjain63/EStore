@@ -5,32 +5,22 @@ import {NavigationProp, useNavigation} from '@react-navigation/native';
 import {CategoryNavParams} from '../../../../Navigation/CategoryNavigation';
 
 export type CollectionsProps = {
-  name: string;
+  names: string;
   itemCount: number;
   image: string;
-  isFirstItem: boolean;
 };
 
-const Collection = ({
-  name,
-  itemCount,
-  image,
-  isFirstItem,
-}: CollectionsProps) => {
+const Collection = ({names, itemCount, image}: CollectionsProps) => {
   const navigation = useNavigation<NavigationProp<CategoryNavParams>>();
   return (
-    <View
-      style={[
-        styles.container,
-        isFirstItem && styles.firstItemContainer, // Conditionally apply the border radius
-      ]}>
+    <View style={styles.container}>
       <Image source={{uri: image}} style={styles.images} />
       <View style={styles.minicontainer}>
         <View style={styles.wrapper}>
-          <Text style={styles.text}>{name}</Text>
+          <Text style={styles.text}>{names}</Text>
           <TouchableOpacity
             style={styles.forward}
-            onPress={() => navigation.navigate('selectedcategory', {name})}>
+            onPress={() => navigation.navigate('selectedproduct', {names})}>
             <Image source={Images.forwardicon} style={styles.img} />
           </TouchableOpacity>
         </View>
@@ -42,8 +32,8 @@ const Collection = ({
 
 const styles = StyleSheet.create({
   firstItemContainer: {
-    borderTopLeftRadius: 40,
-    borderTopRightRadius: 40,
+    // borderTopLeftRadius: 40,
+    // borderTopRightRadius: 40,
   },
   wrapper: {
     flexDirection: 'row',
@@ -57,8 +47,6 @@ const styles = StyleSheet.create({
     marginLeft: '4%',
   },
   container: {
-    padding: 20,
-    backgroundColor: '#FFFFFF',
     flexDirection: 'row',
   },
   images: {
