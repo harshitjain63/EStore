@@ -102,7 +102,7 @@ const Body = () => {
 };
 
 const styles = StyleSheet.create({
-  maincontainer: {marginBottom: 45},
+  maincontainer: {marginBottom: 45, height: '65%'},
   container: {
     flexDirection: 'row',
     justifyContent: 'space-between',
