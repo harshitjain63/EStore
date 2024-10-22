@@ -44,6 +44,7 @@ const MainTabNavigator = () => {
           name="Another"
           component={Another}
           options={{
+            headerShown: false,
             tabBarIcon: ({focused}) => (
               <View style={styles.middlecontainer}>
                 <Image source={Images.bottomicon} style={styles.extraimg} />

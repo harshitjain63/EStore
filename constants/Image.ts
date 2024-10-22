@@ -23,6 +23,7 @@ type ImageProp = {
   forwardicon: ImageSourcePropType;
   welcome: ImageSourcePropType;
   star: ImageSourcePropType;
+  bin: ImageSourcePropType;
 };
 export const Images: ImageProp = {
   ushericon: require('../assets/usher.png'),
@@ -46,4 +47,5 @@ export const Images: ImageProp = {
   forwardicon: require('../assets/Bottomnavigateicon/next.png'),
   welcome: require('../assets/welcome.png'),
   star: require('../assets/star.png'),
+  bin: require('../assets/trash.png'),
 };
