@@ -25,7 +25,14 @@ const MainTabNavigator = () => {
           options={{
             tabBarIcon: ({focused}) => (
               <View style={styles.middlecontainer}>
-                <Image source={Images.homebottomicon} style={styles.img} />
+                <Image
+                  source={Images.homebottomicon}
+                  style={{
+                    ...styles.imgsetting,
+                    tintColor: focused ? 'red' : 'grey',
+                    opacity: focused ? 1 : 1,
+                  }}
+                />
                 {focused && (
                   <Text
                     style={[
@@ -50,7 +57,14 @@ const MainTabNavigator = () => {
             headerShown: false,
             tabBarIcon: ({focused}) => (
               <View style={styles.middlecontainer}>
-                <Image source={Images.bottomicon} style={styles.extraimg} />
+                <Image
+                  source={Images.bottomicon}
+                  style={{
+                    ...styles.extraimg,
+                    tintColor: focused ? 'red' : 'grey',
+                    opacity: focused ? 1 : 1,
+                  }}
+                />
                 {focused && (
                   <Text
                     style={[
@@ -61,13 +75,44 @@ const MainTabNavigator = () => {
                         marginTop: focused ? '10%' : null,
                       },
                     ]}>
-                    Another
+                    Cart
                   </Text>
                 )}
               </View>
             ),
           }}
         />
+
+        <Tab.Screen
+          name="User"
+          component={User}
+          options={{
+            headerShown: false,
+            tabBarIcon: ({focused}) => (
+              <View style={styles.middlecontainer}>
+                <Image
+                  source={
+                    focused ? Images.reduserbottomicon : Images.userbottomicon
+                  }
+                  style={styles.userimg}
+                />
+                {focused && (
+                  <Text
+                    style={[
+                      styles.txt,
+                      {
+                        color: focused ? '#FA4248' : 'black',
+                        marginTop: focused ? '10%' : null,
+                      },
+                    ]}>
+                    Account
+                  </Text>
+                )}
+              </View>
+            ),
+          }}
+        />
+
         <Tab.Screen
           name="Setting"
           component={Setting}
@@ -76,7 +121,11 @@ const MainTabNavigator = () => {
               <View style={styles.middlecontainer}>
                 <Image
                   source={Images.settingbottomicon}
-                  style={styles.imgsetting}
+                  style={{
+                    ...styles.imgsetting,
+                    tintColor: focused ? 'red' : 'grey',
+                    opacity: focused ? 1 : 1,
+                  }}
                 />
                 {focused && (
                   <Text
@@ -88,29 +137,6 @@ const MainTabNavigator = () => {
                       },
                     ]}>
                     Setting
-                  </Text>
-                )}
-              </View>
-            ),
-          }}
-        />
-        <Tab.Screen
-          name="User"
-          component={User}
-          options={{
-            tabBarIcon: ({focused}) => (
-              <View style={styles.middlecontainer}>
-                <Image source={Images.userbottomicon} style={styles.userimg} />
-                {focused && (
-                  <Text
-                    style={[
-                      styles.txt,
-                      {
-                        color: focused ? '#FA4248' : 'black',
-                        marginTop: focused ? '10%' : null,
-                      },
-                    ]}>
-                    User
                   </Text>
                 )}
               </View>

@@ -32,6 +32,8 @@ type ImageProp = {
   reddress: ImageSourcePropType;
   hat: ImageSourcePropType;
   orderaccepted: ImageSourcePropType;
+  reduserbottomicon: ImageSourcePropType;
+  new: ImageSourcePropType;
 };
 export const Images: ImageProp = {
   ushericon: require('../assets/usher.png'),
@@ -64,4 +66,6 @@ export const Images: ImageProp = {
   reddress: require('../assets/reddress.png'),
   hat: require('../assets/white-hat.png'),
   orderaccepted: require('../assets/orderaccepted.png'),
+  reduserbottomicon: require('../assets/Bottomnavigateicon/reduser.png'),
+  new: require('../assets/new.png'),
 };
