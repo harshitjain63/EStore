@@ -82,7 +82,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     marginTop: '8%',
     justifyContent: 'space-between',
-    marginHorizontal: '8%',
+    paddingHorizontal: '8%',
   },
   container: {
     backgroundColor: '#FFFFFF',
@@ -92,7 +92,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     marginTop: '3%',
     justifyContent: 'space-between',
-    marginHorizontal: '8%',
+    paddingHorizontal: '8%',
   },
   img: {
     height: 20,
@@ -113,7 +113,7 @@ const styles = StyleSheet.create({
   box: {
     flexDirection: 'row',
     marginTop: '5%',
-    paddingTop: 10,
+    paddingHorizontal: '5%',
   },
   rowimg: {
     width: 100,

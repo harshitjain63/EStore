@@ -47,10 +47,10 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   container: {
-    padding: 10,
-    paddingVertical: 20,
     backgroundColor: '#FFFFFF',
     flexDirection: 'row',
+    paddingHorizontal: '7%',
+    paddingVertical: '3%',
   },
   images: {
     width: 100,

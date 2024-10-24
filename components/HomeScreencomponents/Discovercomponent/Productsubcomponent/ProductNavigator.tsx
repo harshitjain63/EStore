@@ -36,37 +36,55 @@ const ProductNavigator = ({products}: ProductNavigatorProps) => {
   return (
     <View style={styles.container}>
       <View style={styles.row}>
-        <TouchableOpacity
-          style={styles.redball}
-          onPress={() => handleSizePress('L')}
-        />
-        <TouchableOpacity
-          style={[styles.sizeball, selectedSize === 'L' && styles.selectedSize]}
-          onPress={() => handleSizePress('L')}>
-          <Text style={styles.sizetxt}>L</Text>
-        </TouchableOpacity>
-      </View>
-      <View style={styles.row}>
-        <TouchableOpacity
-          style={styles.yellowball}
-          onPress={() => handleSizePress('M')}
-        />
-        <TouchableOpacity
-          style={[styles.sizeball, selectedSize === 'M' && styles.selectedSize]}
-          onPress={() => handleSizePress('M')}>
-          <Text style={styles.sizetxt}>M</Text>
-        </TouchableOpacity>
-      </View>
-      <View style={styles.row}>
-        <TouchableOpacity
-          style={styles.blueball}
-          onPress={() => handleSizePress('S')}
-        />
-        <TouchableOpacity
-          style={[styles.sizeball, selectedSize === 'S' && styles.selectedSize]}
-          onPress={() => handleSizePress('S')}>
-          <Text style={styles.sizetxt}>S</Text>
-        </TouchableOpacity>
+        <View style={{gap: 10, marginTop: '3.5%'}}>
+          <TouchableOpacity
+            style={styles.redball}
+            onPress={() => handleSizePress('L')}
+          />
+          <TouchableOpacity
+            style={styles.yellowball}
+            onPress={() => handleSizePress('M')}
+          />
+
+          <TouchableOpacity
+            style={styles.blueball}
+            onPress={() => handleSizePress('S')}
+          />
+        </View>
+        <View>
+          <Image
+            source={Images.reddress}
+            style={{height: 100, width: 100, marginTop: '15%'}}
+          />
+        </View>
+        <View style={{gap: 12, marginTop: '-2%'}}>
+          <TouchableOpacity
+            style={[
+              styles.sizeball,
+              selectedSize === 'L' && styles.selectedSize,
+            ]}
+            onPress={() => handleSizePress('L')}>
+            <Text style={styles.sizetxt}>L</Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity
+            style={[
+              styles.sizeball,
+              selectedSize === 'M' && styles.selectedSize,
+            ]}
+            onPress={() => handleSizePress('M')}>
+            <Text style={styles.sizetxt}>M</Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity
+            style={[
+              styles.sizeball,
+              selectedSize === 'S' && styles.selectedSize,
+            ]}
+            onPress={() => handleSizePress('S')}>
+            <Text style={styles.sizetxt}>S</Text>
+          </TouchableOpacity>
+        </View>
       </View>
       <View style={styles.productInfo}>
         <Text style={styles.productName}>{products[currentIndex].product}</Text>
@@ -109,7 +127,6 @@ const styles = StyleSheet.create({
     width: 35,
     borderWidth: 1,
     borderColor: 'white',
-    marginBottom: 10,
   },
   selectedSize: {
     borderWidth: 2,
@@ -149,6 +166,7 @@ const styles = StyleSheet.create({
   },
   productInfo: {
     alignItems: 'center',
+    marginTop: '15%',
   },
   productName: {
     fontSize: 22,

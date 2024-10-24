@@ -24,6 +24,13 @@ type ImageProp = {
   welcome: ImageSourcePropType;
   star: ImageSourcePropType;
   bin: ImageSourcePropType;
+  check: ImageSourcePropType;
+  creditcard: ImageSourcePropType;
+  paypal: ImageSourcePropType;
+  wallet: ImageSourcePropType;
+  mastercard: ImageSourcePropType;
+  reddress: ImageSourcePropType;
+  hat: ImageSourcePropType;
 };
 export const Images: ImageProp = {
   ushericon: require('../assets/usher.png'),
@@ -48,4 +55,11 @@ export const Images: ImageProp = {
   welcome: require('../assets/welcome.png'),
   star: require('../assets/star.png'),
   bin: require('../assets/trash.png'),
+  check: require('../assets/check.png'),
+  creditcard: require('../assets/credit-card.png'),
+  paypal: require('../assets/paypal.png'),
+  wallet: require('../assets/wallet.png'),
+  mastercard: require('../assets/mastercard.png'),
+  reddress: require('../assets/reddress.png'),
+  hat: require('../assets/white-hat.png'),
 };

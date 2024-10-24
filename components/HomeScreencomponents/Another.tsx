@@ -9,6 +9,8 @@ import React from 'react';
 import Header from './Anothercomponents/Header';
 import AnotherBody from './Anothercomponents/AnotherBody';
 import AnotherFooter from './Anothercomponents/AnotherFooter';
+import {NavigationProp, useNavigation} from '@react-navigation/native';
+import {AnotherNavParams} from '../../Navigation/AnotherNavigation';
 
 const Another = () => {
   const sampleData = [
@@ -42,6 +44,8 @@ const Another = () => {
     },
   ];
 
+  const navigation = useNavigation<NavigationProp<AnotherNavParams>>();
+
   return (
     <View style={styles.container}>
       <Header />
@@ -65,6 +69,7 @@ const Another = () => {
         </ScrollView>
       </View>
       <TouchableOpacity
+        onPress={() => navigation.navigate('Checkout')}
         style={{
           height: '30%',
           width: '100%',

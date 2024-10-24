@@ -4,8 +4,8 @@ import {View, Text, Image, StyleSheet, Dimensions} from 'react-native';
 import {Images} from '../constants/Image';
 import Setting from '../components/HomeScreencomponents/Setting';
 import User from '../components/HomeScreencomponents/User';
-import Another from '../components/HomeScreencomponents/Another';
 import DrawerNavigation from './DrawerNavigation';
+import AnotherNavigation from './AnotherNavigation';
 
 const Tab = createBottomTabNavigator();
 
@@ -30,7 +30,10 @@ const MainTabNavigator = () => {
                   <Text
                     style={[
                       styles.txt,
-                      {color: focused ? '#FA4248' : 'black'},
+                      {
+                        color: focused ? '#FA4248' : 'black',
+                        marginTop: focused ? '10%' : null,
+                      },
                     ]}>
                     Home
                   </Text>
@@ -41,8 +44,8 @@ const MainTabNavigator = () => {
           }}
         />
         <Tab.Screen
-          name="Another"
-          component={Another}
+          name="AnotherNav"
+          component={AnotherNavigation}
           options={{
             headerShown: false,
             tabBarIcon: ({focused}) => (
@@ -52,7 +55,11 @@ const MainTabNavigator = () => {
                   <Text
                     style={[
                       styles.txt,
-                      {color: focused ? '#FA4248' : 'black'},
+                      {
+                        color: focused ? '#FA4248' : 'black',
+                        left: focused ? -15 : null,
+                        marginTop: focused ? '10%' : null,
+                      },
                     ]}>
                     Another
                   </Text>
@@ -67,12 +74,18 @@ const MainTabNavigator = () => {
           options={{
             tabBarIcon: ({focused}) => (
               <View style={styles.middlecontainer}>
-                <Image source={Images.settingbottomicon} style={styles.img} />
+                <Image
+                  source={Images.settingbottomicon}
+                  style={styles.imgsetting}
+                />
                 {focused && (
                   <Text
                     style={[
                       styles.txt,
-                      {color: focused ? '#FA4248' : 'black'},
+                      {
+                        color: focused ? '#FA4248' : 'black',
+                        marginTop: focused ? '10%' : null,
+                      },
                     ]}>
                     Setting
                   </Text>
@@ -87,12 +100,15 @@ const MainTabNavigator = () => {
           options={{
             tabBarIcon: ({focused}) => (
               <View style={styles.middlecontainer}>
-                <Image source={Images.userbottomicon} style={styles.img} />
+                <Image source={Images.userbottomicon} style={styles.userimg} />
                 {focused && (
                   <Text
                     style={[
                       styles.txt,
-                      {color: focused ? '#FA4248' : 'black'},
+                      {
+                        color: focused ? '#FA4248' : 'black',
+                        marginTop: focused ? '10%' : null,
+                      },
                     ]}>
                     User
                   </Text>
@@ -127,6 +143,19 @@ const styles = StyleSheet.create({
     height: height * 0.035,
     width: width * 0.06,
     resizeMode: 'contain',
+    marginTop: '10%',
+  },
+  imgsetting: {
+    height: height * 0.035,
+    width: width * 0.06,
+    resizeMode: 'contain',
+    marginTop: '12%',
+  },
+  userimg: {
+    height: height * 0.035,
+    width: width * 0.06,
+    resizeMode: 'contain',
+    marginTop: '12%',
   },
   middlecontainer: {
     flexDirection: 'row',
@@ -141,6 +170,7 @@ const styles = StyleSheet.create({
     height: 40,
     width: 50,
     resizeMode: 'contain',
+    marginTop: '6%',
   },
 });
 

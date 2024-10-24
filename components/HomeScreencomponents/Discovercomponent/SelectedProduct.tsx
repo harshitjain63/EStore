@@ -20,7 +20,7 @@ import ProductNavigator from './Productsubcomponent/ProductNavigator';
 import SubHeader from './Productsubcomponent/SubHeader';
 
 const products = [
-  {id: 1, product: 'Product 1', price: '$10'},
+  {id: 1, product: 'Red Dress', price: '$10'},
   {id: 2, product: 'Product 2', price: '$15'},
   {id: 3, product: 'Product 3', price: '$20'},
 ];

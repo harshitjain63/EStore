@@ -33,9 +33,8 @@ const Body = ({image, name, category, price}: BodyProps) => {
 
 const styles = StyleSheet.create({
   container: {
-    padding: 10,
-    paddingVertical: 20,
     backgroundColor: '#FFFFFF',
+    padding: '3%',
   },
   images: {
     width: 150,

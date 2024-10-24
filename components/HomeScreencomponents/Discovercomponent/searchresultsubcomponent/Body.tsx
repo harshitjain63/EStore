@@ -108,7 +108,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     paddingHorizontal: '10%',
     width: '100%',
-    paddingBottom: 5,
+    paddingBottom: '2%',
     marginTop: '7%',
   },
   txt: {
