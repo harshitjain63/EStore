@@ -13,6 +13,8 @@ import {SafeAreaView} from 'react-native-safe-area-context';
 import Payments from './Checkoutsubcomponents/Payments';
 import Summary from './Checkoutsubcomponents/Summary';
 import StepIndicator from 'react-native-step-indicator';
+import {useNavigation, NavigationProp} from '@react-navigation/native';
+import {AnotherNavParams} from '../../../Navigation/AnotherNavigation';
 
 const steps = [
   {id: 1, label: 'Address'},
@@ -41,9 +43,12 @@ const Checkout = () => {
   const text = 'Checkout';
   const endingimage = Images.searchicon;
   const [step, setStep] = useState<number>(0);
+  const navigation = useNavigation<NavigationProp<AnotherNavParams>>();
 
   const handleNext = () => {
-    if (step < 2) {
+    if (step === 2) {
+      navigation.navigate('Orderaccepted');
+    } else if (step < 2) {
       setStep(step + 1);
     }
   };

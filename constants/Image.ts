@@ -31,6 +31,7 @@ type ImageProp = {
   mastercard: ImageSourcePropType;
   reddress: ImageSourcePropType;
   hat: ImageSourcePropType;
+  orderaccepted: ImageSourcePropType;
 };
 export const Images: ImageProp = {
   ushericon: require('../assets/usher.png'),
@@ -62,4 +63,5 @@ export const Images: ImageProp = {
   mastercard: require('../assets/mastercard.png'),
   reddress: require('../assets/reddress.png'),
   hat: require('../assets/white-hat.png'),
+  orderaccepted: require('../assets/orderaccepted.png'),
 };
