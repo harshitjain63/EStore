@@ -22,10 +22,10 @@ const Options = ({name, image, forwardicon, newimg}: variable) => {
           marginTop: '2.5%',
         }}>
         <Text style={styles.name}>{name}</Text>
-        <Image source={newimg} style={styles.imgnew} />
+        {newimg && <Image source={newimg} style={styles.imgnew} />}
       </View>
 
-      <Image source={forwardicon} style={styles.imgs} />
+      {forwardicon && <Image source={forwardicon} style={styles.imgs} />}
     </View>
   );
 };
@@ -41,6 +41,7 @@ const styles = StyleSheet.create({
   img: {
     height: 30,
     width: 30,
+    tintColor: '#FA42484F',
   },
   imgnew: {
     height: 30,
@@ -59,7 +60,7 @@ const styles = StyleSheet.create({
     width: 45,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#B4B4B4',
+    backgroundColor: '#FA42484F',
   },
   name: {
     color: 'black',

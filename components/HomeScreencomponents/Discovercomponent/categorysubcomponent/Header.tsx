@@ -1,13 +1,22 @@
 import {View, Text, Image, StyleSheet, TouchableOpacity} from 'react-native';
 import React from 'react';
 import {Images} from '../../../../constants/Image';
+import {
+  DrawerActions,
+  NavigationProp,
+  useNavigation,
+} from '@react-navigation/native';
+import {DrawerNavprop} from '../../../../Navigation/DrawerNavigation';
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 const Header = () => {
+  const navigation =
+    useNavigation<NavigationProp<DrawerNavprop, 'categories'>>();
   return (
     <View style={styles.container}>
       <View style={styles.header}>
-        <TouchableOpacity>
+        <TouchableOpacity
+          onPress={() => navigation.dispatch(DrawerActions.openDrawer())}>
           <Image style={styles.img} source={Images.menuicon} />
         </TouchableOpacity>
         <Text style={styles.discovertxt}>Category</Text>

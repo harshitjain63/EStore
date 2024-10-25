@@ -117,6 +117,7 @@ const MainTabNavigator = () => {
           name="Setting"
           component={Setting}
           options={{
+            headerShown: false,
             tabBarIcon: ({focused}) => (
               <View style={styles.middlecontainer}>
                 <Image

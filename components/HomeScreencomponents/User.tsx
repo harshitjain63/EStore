@@ -78,8 +78,8 @@ const User = () => {
                 key={item.id}
                 name={item.name}
                 image={item.image}
-                newimg={item.new ? item.new : undefined}
-                forwardicon={item.forwardIcon ? item.forwardIcon : undefined}
+                newimg={item.new}
+                forwardicon={item.forwardIcon}
               />
             ))
           : null}

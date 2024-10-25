@@ -34,6 +34,12 @@ type ImageProp = {
   orderaccepted: ImageSourcePropType;
   reduserbottomicon: ImageSourcePropType;
   new: ImageSourcePropType;
+  categorydrawer: ImageSourcePropType;
+  collectiondrawer: ImageSourcePropType;
+  heelsdrawer: ImageSourcePropType;
+  homedrawer: ImageSourcePropType;
+  contactsdrawer: ImageSourcePropType;
+  map: ImageSourcePropType;
 };
 export const Images: ImageProp = {
   ushericon: require('../assets/usher.png'),
@@ -68,4 +74,10 @@ export const Images: ImageProp = {
   orderaccepted: require('../assets/orderaccepted.png'),
   reduserbottomicon: require('../assets/Bottomnavigateicon/reduser.png'),
   new: require('../assets/new.png'),
+  categorydrawer: require('../assets/Drawericon/category.png'),
+  collectiondrawer: require('../assets/Drawericon/collectionbag.png'),
+  heelsdrawer: require('../assets/Drawericon/high-heels.png'),
+  contactsdrawer: require('../assets/Drawericon/telephone.png'),
+  homedrawer: require('../assets/Drawericon/home.png'),
+  map: require('../assets/street-map.png'),
 };
