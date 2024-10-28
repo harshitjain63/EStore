@@ -2,18 +2,53 @@ import {View, Text, Image, StyleSheet, TouchableOpacity} from 'react-native';
 import React from 'react';
 import {Images} from '../../../constants/Image';
 import {BodyProps} from '../Discovercomponent/Body';
+import {
+  addItemToCart,
+  clearCart,
+  removeItemFromCart,
+} from '../../../redux/Slice/CartSlice';
+import {useAppDispatch} from '../../../redux/hooks';
 
-const AnotherBody = ({image, name, category, price}: BodyProps) => {
+const AnotherBody = ({
+  image,
+  name,
+  category,
+  price,
+  id,
+  quantity,
+}: BodyProps) => {
+  const dispatch = useAppDispatch();
+  const handleRemoveCart = (id: string) => {
+    dispatch(removeItemFromCart(id));
+  };
+
+  const handleRemoveWholeItem = (id: string) => {
+    dispatch(clearCart(id));
+  };
+
+  const handleAddToCart = () => {
+    dispatch(
+      addItemToCart({
+        id: '1',
+        image: 'https://via.placeholder.com/150',
+        name: 'White Top',
+        category: 'Women',
+        price: '15',
+        quantity: 1,
+      }),
+    );
+  };
   return (
     <View style={styles.container}>
       <Image source={{uri: image}} style={styles.images} />
       <View style={styles.minicontainer}>
         <View style={styles.wrapper}>
           <Text style={styles.text}>{name}</Text>
-          <Text style={styles.text3}>{price}</Text>
+          <Text style={styles.text3}>${price}</Text>
         </View>
         <Text style={styles.text2}>{category}</Text>
         <TouchableOpacity
+          onPress={() => handleRemoveWholeItem(id)}
           style={{
             position: 'absolute',
             width: '22.5%',
@@ -27,17 +62,22 @@ const AnotherBody = ({image, name, category, price}: BodyProps) => {
           }}>
           <Image source={Images.bin} style={styles.image} />
         </TouchableOpacity>
-        <TouchableOpacity style={styles.touchaddsub}>
+        <View style={styles.touchaddsub}>
           <Text
+            onPress={handleAddToCart}
             style={{
               color: '#343434',
               fontSize: 13,
             }}>
             +
           </Text>
-          <Text style={{color: '#343434', fontSize: 13}}>1</Text>
-          <Text style={{color: '#343434', fontSize: 13}}>--</Text>
-        </TouchableOpacity>
+          <Text style={{color: '#343434', fontSize: 13}}>{quantity}</Text>
+          <Text
+            style={{color: '#343434', fontSize: 13}}
+            onPress={() => handleRemoveCart('1')}>
+            --
+          </Text>
+        </View>
       </View>
     </View>
   );

@@ -18,6 +18,8 @@ import {CategoryNavParams} from '../../../Navigation/CategoryNavigation';
 import {Images} from '../../../constants/Image';
 import ProductNavigator from './Productsubcomponent/ProductNavigator';
 import SubHeader from './Productsubcomponent/SubHeader';
+import {useAppDispatch} from '../../../redux/hooks';
+import {addItemToCart} from '../../../redux/Slice/CartSlice';
 
 const products = [
   {id: 1, product: 'Red Dress', price: '$10'},
@@ -57,6 +59,20 @@ const SelectedProduct = () => {
     outputRange: [0, 1],
     extrapolate: 'clamp',
   });
+
+  const dispatch = useAppDispatch();
+  const handleAddToCart = () => {
+    dispatch(
+      addItemToCart({
+        id: '1',
+        image: 'https://via.placeholder.com/150',
+        name: 'White Top',
+        category: 'Women',
+        price: '15',
+        quantity: 0,
+      }),
+    );
+  };
 
   return (
     <View style={styles.container}>
@@ -103,7 +119,7 @@ const SelectedProduct = () => {
 
         <Animated.View
           style={{...styles.buttonContainer, opacity: oldContentOpacity}}>
-          <TouchableOpacity style={styles.buttons}>
+          <TouchableOpacity style={styles.buttons} onPress={handleAddToCart}>
             <Text style={{color: '#ffff', fontWeight: 'bold'}}>
               ADD TO CART
             </Text>

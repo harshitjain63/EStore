@@ -1,9 +1,27 @@
 import {View, Text, StyleSheet, TouchableOpacity, Image} from 'react-native';
-import React from 'react';
+import React, {useState} from 'react';
 import Result from '../searchresultsubcomponent/Result';
 import {Images} from '../../../../constants/Image';
+import {useAppDispatch} from '../../../../redux/hooks';
+import {addItemToCart} from '../../../../redux/Slice/CartSlice';
 
 const SubHeader = () => {
+  const dispatch = useAppDispatch();
+  const [quantity, setQuantity] = useState(0);
+  console.log(quantity);
+
+  const handleAddToCart = () => {
+    dispatch(
+      addItemToCart({
+        id: '1',
+        image: 'https://via.placeholder.com/150',
+        name: 'White Top',
+        category: 'Women',
+        price: '15',
+        quantity: quantity,
+      }),
+    );
+  };
   return (
     <View style={styles.container}>
       <View style={styles.row}>
@@ -44,7 +62,7 @@ const SubHeader = () => {
         making it look like readable English.{' '}
       </Text>
       <View style={styles.row}>
-        <TouchableOpacity style={styles.redcircle}>
+        <TouchableOpacity style={styles.redcircle} onPress={handleAddToCart}>
           <Text
             style={{
               color: '#FFFF',
@@ -55,11 +73,19 @@ const SubHeader = () => {
           </Text>
         </TouchableOpacity>
         <TouchableOpacity style={styles.touchaddsub}>
-          <Text style={{color: '#343434', fontSize: 15, paddingLeft: '5%'}}>
+          <Text
+            style={{color: '#343434', fontSize: 15, paddingLeft: '5%'}}
+            onPress={() => setQuantity(quantity - 1)}>
             -
           </Text>
-          <Text style={{color: '#343434', fontSize: 15}}>1</Text>
-          <Text style={{color: '#343434', fontSize: 15, paddingRight: '5%'}}>
+          <Text style={{color: '#343434', fontSize: 15}}>{quantity}</Text>
+          <Text
+            style={{
+              color: '#343434',
+              fontSize: 15,
+              paddingRight: '5%',
+            }}
+            onPress={() => setQuantity(quantity + 1)}>
             +
           </Text>
         </TouchableOpacity>

@@ -12,37 +12,40 @@ import AnotherFooter from './Anothercomponents/AnotherFooter';
 import {NavigationProp, useNavigation} from '@react-navigation/native';
 import {AnotherNavParams} from '../../Navigation/AnotherNavigation';
 
+import {useAppSelector} from '../../redux/hooks';
+
 const Another = () => {
-  const sampleData = [
-    {
-      id: '1',
-      image: 'https://via.placeholder.com/150',
-      name: 'White Top',
-      category: 'Women',
-      price: '$15',
-    },
-    {
-      id: '2',
-      image: 'https://via.placeholder.com/150',
-      name: 'Black Shirt',
-      category: 'Men',
-      price: '$20',
-    },
-    {
-      id: '3',
-      image: 'https://via.placeholder.com/150',
-      name: 'Black Shirt',
-      category: 'Men',
-      price: '$20',
-    },
-    {
-      id: '4',
-      image: 'https://via.placeholder.com/150',
-      name: 'Black Shirt',
-      category: 'Men',
-      price: '$20',
-    },
-  ];
+  const sampleData = useAppSelector(state => state.cartdata.data);
+  // const sampleData = [
+  //   {
+  //     id: '1',
+  //     image: 'https://via.placeholder.com/150',
+  //     name: 'White Top',
+  //     category: 'Women',
+  //     price: '$15',
+  //   },
+  //   {
+  //     id: '2',
+  //     image: 'https://via.placeholder.com/150',
+  //     name: 'Black Shirt',
+  //     category: 'Men',
+  //     price: '$20',
+  //   },
+  //   {
+  //     id: '3',
+  //     image: 'https://via.placeholder.com/150',
+  //     name: 'Black Shirt',
+  //     category: 'Men',
+  //     price: '$20',
+  //   },
+  //   {
+  //     id: '4',
+  //     image: 'https://via.placeholder.com/150',
+  //     name: 'Black Shirt',
+  //     category: 'Men',
+  //     price: '$20',
+  //   },
+  // ];
 
   const navigation = useNavigation<NavigationProp<AnotherNavParams>>();
 
@@ -56,10 +59,12 @@ const Another = () => {
               ? sampleData.map(item => (
                   <AnotherBody
                     key={item.id}
+                    id={item.id}
                     image={item.image}
                     name={item.name}
                     category={item.category}
                     price={item.price}
+                    quantity={item.quantity}
                   />
                 ))
               : null}

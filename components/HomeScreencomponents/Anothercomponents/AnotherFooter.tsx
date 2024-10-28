@@ -1,14 +1,24 @@
 import {View, Text, StyleSheet, TextInput} from 'react-native';
 import React from 'react';
+import {useAppSelector} from '../../../redux/hooks';
+import {CartItem} from '../../../redux/Slice/CartSlice';
 
 const AnotherFooter = () => {
+  const selector = useAppSelector(state => state.cartdata.data);
+
+  const totalPrice = selector.reduce((acc: number, item: CartItem) => {
+    return acc + parseInt(item.price) * item.quantity;
+  }, 0);
+
+  console.log(totalPrice);
+
   return (
     <View style={styles.container}>
       <View style={{padding: '5%'}}>
         <Text style={styles.totaltxt}>Totals</Text>
         <View style={styles.row}>
           <Text style={styles.costtxt}>Sub Total</Text>
-          <Text style={styles.costmoneytxt}>$30.00</Text>
+          <Text style={styles.costmoneytxt}>${totalPrice.toFixed(2)}</Text>
         </View>
         <View style={styles.row}>
           <Text style={styles.costtxt}>Shipping</Text>
