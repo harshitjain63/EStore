@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "811791922192",
+    "project_id": "estore-d80cf",
+    "storage_bucket": "estore-d80cf.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:811791922192:android:3e4f22a6998d0403b7c695",
+        "android_client_info": {
+          "package_name": "com.estore"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "811791922192-tbl2oucnrclalt6jtqul91742kntit6t.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.estore",
+            "certificate_hash": "984b00042ccd1ae10666804bf1123b6562f2526e"
+          }
+        },
+        {
+          "client_id": "811791922192-urmt5mn579bnoj5teivbg1on87c74dpr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC8mFNMRTRDMR-k9xOcIpl-CFEOBi09V_c"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "811791922192-urmt5mn579bnoj5teivbg1on87c74dpr.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
