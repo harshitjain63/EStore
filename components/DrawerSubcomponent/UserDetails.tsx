@@ -1,8 +1,10 @@
 import {Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import React from 'react';
 import {Images} from '../../constants/Image';
+import {useAppSelector} from '../../redux/hooks';
 
 const UserDetails = () => {
+  const {name, email, photo} = useAppSelector(state => state.auth);
   return (
     <View style={styles.wrapper}>
       <View style={styles.container}>
@@ -15,7 +17,11 @@ const UserDetails = () => {
             justifyContent: 'center',
             alignItems: 'center',
           }}>
-          <Image source={Images.ushericon} style={{height: 30, width: 30}} />
+          {photo ? (
+            <Image source={{uri: photo}} style={styles.img} />
+          ) : (
+            <Image source={Images.ushericon} style={styles.img} />
+          )}
         </TouchableOpacity>
         <TouchableOpacity
           style={{
@@ -27,8 +33,8 @@ const UserDetails = () => {
           />
         </TouchableOpacity>
       </View>
-      <Text style={styles.txt}>Jameson Dunn</Text>
-      <Text style={styles.emailtxt}>@jamesondunn</Text>
+      <Text style={styles.txt}>{name}</Text>
+      <Text style={styles.emailtxt}>{email}</Text>
     </View>
   );
 };
@@ -58,4 +64,5 @@ const styles = StyleSheet.create({
     color: '#FFF',
     marginTop: '1%',
   },
+  img: {height: 42, width: 42, borderRadius: 17},
 });

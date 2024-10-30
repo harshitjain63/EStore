@@ -2,16 +2,23 @@ import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
 import React from 'react';
 import {WelcomeScreenProp} from '../../Screens/WelcomeSwitchAccountScreen';
 
-const Footer = ({navigation}: WelcomeScreenProp) => {
+interface FooterProps {
+  navigation: WelcomeScreenProp['navigation'];
+  name: string | null;
+}
+
+const Footer = ({navigation, name}: FooterProps) => {
   return (
     <View style={styles.middlecontainer}>
       <Text style={styles.welcometext}>Welcome Back</Text>
-      <Text style={styles.signuptext}>Jameson Dunn</Text>
+      <Text style={styles.signuptext}>{name}</Text>
 
       <TouchableOpacity
         style={styles.signinbutton}
         onPress={() => navigation.navigate('BottomNavigation')}>
-        <Text style={styles.signinbuttontext}>CONTINUE AS JAMESON</Text>
+        <Text style={styles.signinbuttontext}>
+          CONTINUE AS {name?.toUpperCase()}
+        </Text>
       </TouchableOpacity>
 
       <TouchableOpacity

@@ -1,4 +1,4 @@
-import {Text, StyleSheet, ScrollView} from 'react-native';
+import {StyleSheet, ScrollView} from 'react-native';
 import React from 'react';
 import Header from './Anothercomponents/Checkoutsubcomponents/Header';
 import {Images} from '../../constants/Image';
@@ -63,7 +63,6 @@ const User = () => {
   const endingimage = Images.searchicon;
   return (
     <SafeAreaView style={styles.container}>
-      <Text>User</Text>
       <Header
         startingimage={startingimage}
         text={text}

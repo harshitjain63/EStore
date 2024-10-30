@@ -3,8 +3,9 @@ import React from 'react';
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
 import {RootStackParams} from '../Navigation/StackNavigation';
 import Header from '../components/Welcomecomponents/Header';
-import {Images} from '../constants/Image';
 import Footer from '../components/Welcomecomponents/Footer';
+import {useAppSelector} from '../redux/hooks';
+import {Images} from '../constants/Image';
 
 export type WelcomeScreenProp = NativeStackScreenProps<
   RootStackParams,
@@ -12,11 +13,17 @@ export type WelcomeScreenProp = NativeStackScreenProps<
 >;
 
 const WelcomeSwitchAccountScreen = ({navigation, route}: WelcomeScreenProp) => {
+  const {name, photo} = useAppSelector(state => state.auth);
   return (
     <View style={styles.container}>
       <Header navigation={navigation} route={route} />
-      <Image source={Images.circleicon} style={styles.img} />
-      <Footer navigation={navigation} route={route} />
+      {photo ? (
+        <Image source={{uri: photo}} style={styles.img} />
+      ) : (
+        <Image source={Images.ushericon} style={styles.img} />
+      )}
+
+      <Footer navigation={navigation} name={name} />
     </View>
   );
 };
@@ -31,6 +38,7 @@ const styles = StyleSheet.create({
     width: '33%',
     position: 'relative',
     marginTop: '56%',
+    borderRadius: 60,
   },
 });
 export default WelcomeSwitchAccountScreen;

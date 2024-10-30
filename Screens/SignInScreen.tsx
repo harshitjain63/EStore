@@ -30,7 +30,7 @@ const SignInScreen = ({navigation, route}: SignInScreenProp) => {
         <View style={styles.container}>
           <Text style={styles.ortext}>-OR-</Text>
         </View>
-        <FacebookGoogle />
+        <FacebookGoogle navigation={navigation} route={route} />
         <View style={styles.minicontainer}>
           <Text style={styles.txt}>
             Don&apos;t have an account?{' '}
@@ -43,7 +43,7 @@ const SignInScreen = ({navigation, route}: SignInScreenProp) => {
             </Text>
           </Text>
         </View>
-        <FacebookGoogle />
+        <FacebookGoogle navigation={navigation} route={route} />
       </View>
     </KeyboardAvoidingView>
   );

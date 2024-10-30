@@ -6,7 +6,7 @@ import {
   TouchableOpacity,
   Alert,
 } from 'react-native';
-import React, {useEffect, useState, useCallback} from 'react';
+import React, {useEffect, useCallback} from 'react';
 import {Images} from '../../constants/Image';
 import {
   GoogleSignin,
@@ -15,24 +15,28 @@ import {
   statusCodes,
 } from '@react-native-google-signin/google-signin';
 import {AccessToken, LoginManager} from 'react-native-fbsdk-next';
+import {useAppDispatch} from '../../redux/hooks';
+import {setUser} from '../../redux/Slice/userSlice';
+import {SignInScreenProp} from '../../Screens/SignInScreen';
 
-const FacebookGoogle = () => {
-  const [state, setState] = useState({});
-  console.log(state);
+const FacebookGoogle = ({navigation}: SignInScreenProp) => {
+  const dispatch = useAppDispatch();
 
   useEffect(() => {
     GoogleSignin.configure({
-      webClientId: 'YOUR_GOOGLE_WEB_CLIENT_ID',
+      webClientId:
+        '811791922192-urmt5mn579bnoj5teivbg1on87c74dpr.apps.googleusercontent.com',
     });
   }, []);
 
-  // Google Sign-In function
   const signInWithGoogle = useCallback(async () => {
     try {
       await GoogleSignin.hasPlayServices();
       const response = await GoogleSignin.signIn();
       if (isSuccessResponse(response)) {
-        setState({userInfo: response.data});
+        const {name, email, photo} = response.data.user;
+        dispatch(setUser({name, email, photo}));
+        navigation.navigate('Welcome');
         Alert.alert('Google Login Success', JSON.stringify(response.data));
       } else {
         console.log('User canceled Google login');
@@ -55,35 +59,39 @@ const FacebookGoogle = () => {
     }
   }, []);
 
-  // Facebook Sign-In function
   const signInWithFacebook = useCallback(async () => {
     try {
-      // Logout any existing session to force a fresh login
-      await LoginManager.logOut();
+      const result = await LoginManager.logInWithPermissions([
+        'public_profile',
+        'email',
+      ]);
+      console.log('Login result:', result);
 
-      // Initiate Facebook login
-      LoginManager.logInWithPermissions(['public_profile', 'email']).then(
-        async function (result) {
-          if (result.isCancelled) {
-            Alert.alert('Facebook Login Cancelled');
-          } else {
-            // Get access token and confirm successful login
-            const data = await AccessToken.getCurrentAccessToken();
-            if (data) {
-              Alert.alert('Facebook Login Success', JSON.stringify(data));
-              console.log('Access Token:', data.accessToken.toString());
-            } else {
-              Alert.alert(
-                'Facebook Login Failed',
-                'Access token not available',
-              );
-            }
-          }
-        },
-        function (error) {
-          Alert.alert('Facebook Login Failed', 'Error: ' + error);
-        },
-      );
+      if (result.isCancelled) {
+        Alert.alert('Facebook Login Cancelled');
+      } else {
+        const data = await AccessToken.getCurrentAccessToken();
+        if (data) {
+          const userInfoResponse = await fetch(
+            `https://graph.facebook.com/me?access_token=${data.accessToken}&fields=id,name,email,picture`,
+          );
+          const userInfo = await userInfoResponse.json();
+
+          console.log('User Info:', userInfo);
+
+          dispatch(
+            setUser({
+              name: userInfo.name,
+              email: userInfo.email,
+              photo: userInfo.picture.data.url,
+            }),
+          );
+          Alert.alert('Facebook Login Success', JSON.stringify(userInfo));
+          navigation.navigate('Welcome');
+        } else {
+          Alert.alert('Facebook Login Failed', 'Access token not available');
+        }
+      }
     } catch (error) {
       console.log('Facebook Sign-In error:', error);
       Alert.alert('Facebook Login Error', error?.toString());
