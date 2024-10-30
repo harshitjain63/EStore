@@ -7,8 +7,18 @@ import {
   isSuccessResponse,
   statusCodes,
 } from '@react-native-google-signin/google-signin';
+// import {
+//   LoginButton,
+//   AccessToken,
+//   GraphRequest,
+//   GraphRequestManager,
+// } from 'react-native-fbsdk';
+import {LoginManager} from 'react-native-fbsdk-next';
+import {Alert} from 'react-native';
 
 const FacebookGoogle = () => {
+  // const [userInfo, setUserInfo] = useState(null);
+
   useEffect(() => {
     GoogleSignin.configure({
       webClientId:
@@ -47,10 +57,25 @@ const FacebookGoogle = () => {
     }
   };
 
-  console.log('state', state);
   return (
     <View style={styles.scrollview}>
-      <TouchableOpacity style={styles.facebook}>
+      <TouchableOpacity
+        style={styles.facebook}
+        onPress={() => {
+          LoginManager.logInWithPermissions(['public_profile', 'email']).then(
+            function (result) {
+              if (result.isCancelled) {
+                Alert.alert('Login Cancelled ' + JSON.stringify(result));
+              } else {
+                Alert.alert('Login success with  permisssions: ');
+                Alert.alert('Login Success ' + result.toString());
+              }
+            },
+            function (error) {
+              Alert.alert('Login failed with error: ' + error);
+            },
+          );
+        }}>
         <Image source={Images.facebookicon} style={styles.img} />
         <Text style={styles.fbtxt}>Sign In with Facebook</Text>
       </TouchableOpacity>
