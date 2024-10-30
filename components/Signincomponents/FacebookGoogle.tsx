@@ -1,5 +1,12 @@
-import {View, Text, Image, StyleSheet, TouchableOpacity} from 'react-native';
-import React, {useEffect, useState} from 'react';
+import {
+  View,
+  Text,
+  Image,
+  StyleSheet,
+  TouchableOpacity,
+  Alert,
+} from 'react-native';
+import React, {useEffect, useState, useCallback} from 'react';
 import {Images} from '../../constants/Image';
 import {
   GoogleSignin,
@@ -7,80 +14,90 @@ import {
   isSuccessResponse,
   statusCodes,
 } from '@react-native-google-signin/google-signin';
-// import {
-//   LoginButton,
-//   AccessToken,
-//   GraphRequest,
-//   GraphRequestManager,
-// } from 'react-native-fbsdk';
-import {LoginManager} from 'react-native-fbsdk-next';
-import {Alert} from 'react-native';
+import {AccessToken, LoginManager} from 'react-native-fbsdk-next';
 
 const FacebookGoogle = () => {
-  // const [userInfo, setUserInfo] = useState(null);
+  const [state, setState] = useState({});
+  console.log(state);
 
   useEffect(() => {
     GoogleSignin.configure({
-      webClientId:
-        '811791922192-urmt5mn579bnoj5teivbg1on87c74dpr.apps.googleusercontent.com',
+      webClientId: 'YOUR_GOOGLE_WEB_CLIENT_ID',
     });
   }, []);
 
-  const [state, setState] = useState({});
-  const signIn = async () => {
-    console.log('started function');
+  // Google Sign-In function
+  const signInWithGoogle = useCallback(async () => {
     try {
-      console.log('try working');
       await GoogleSignin.hasPlayServices();
       const response = await GoogleSignin.signIn();
-      console.log(response, 'response');
       if (isSuccessResponse(response)) {
         setState({userInfo: response.data});
+        Alert.alert('Google Login Success', JSON.stringify(response.data));
       } else {
-        console.log('canceled by user');
+        console.log('User canceled Google login');
       }
     } catch (error) {
       if (isErrorWithCode(error)) {
         switch (error.code) {
           case statusCodes.IN_PROGRESS:
-            console.log('already in progress');
+            console.log('Google Sign-In is already in progress');
             break;
           case statusCodes.PLAY_SERVICES_NOT_AVAILABLE:
-            console.log('play services not available or outdated');
+            console.log('Google Play Services not available');
             break;
           default:
             console.log(error);
         }
       } else {
-        console.log(error);
+        console.log('Google Sign-In error:', error);
       }
     }
-  };
+  }, []);
+
+  // Facebook Sign-In function
+  const signInWithFacebook = useCallback(async () => {
+    try {
+      // Logout any existing session to force a fresh login
+      await LoginManager.logOut();
+
+      // Initiate Facebook login
+      LoginManager.logInWithPermissions(['public_profile', 'email']).then(
+        async function (result) {
+          if (result.isCancelled) {
+            Alert.alert('Facebook Login Cancelled');
+          } else {
+            // Get access token and confirm successful login
+            const data = await AccessToken.getCurrentAccessToken();
+            if (data) {
+              Alert.alert('Facebook Login Success', JSON.stringify(data));
+              console.log('Access Token:', data.accessToken.toString());
+            } else {
+              Alert.alert(
+                'Facebook Login Failed',
+                'Access token not available',
+              );
+            }
+          }
+        },
+        function (error) {
+          Alert.alert('Facebook Login Failed', 'Error: ' + error);
+        },
+      );
+    } catch (error) {
+      console.log('Facebook Sign-In error:', error);
+      Alert.alert('Facebook Login Error', error?.toString());
+    }
+  }, []);
 
   return (
     <View style={styles.scrollview}>
-      <TouchableOpacity
-        style={styles.facebook}
-        onPress={() => {
-          LoginManager.logInWithPermissions(['public_profile', 'email']).then(
-            function (result) {
-              if (result.isCancelled) {
-                Alert.alert('Login Cancelled ' + JSON.stringify(result));
-              } else {
-                Alert.alert('Login success with  permisssions: ');
-                Alert.alert('Login Success ' + result.toString());
-              }
-            },
-            function (error) {
-              Alert.alert('Login failed with error: ' + error);
-            },
-          );
-        }}>
+      <TouchableOpacity style={styles.facebook} onPress={signInWithFacebook}>
         <Image source={Images.facebookicon} style={styles.img} />
         <Text style={styles.fbtxt}>Sign In with Facebook</Text>
       </TouchableOpacity>
 
-      <TouchableOpacity style={styles.google} onPress={signIn}>
+      <TouchableOpacity style={styles.google} onPress={signInWithGoogle}>
         <Image source={Images.googleicon} style={styles.img} />
         <Text style={styles.fbtxt}>Sign In with Google</Text>
       </TouchableOpacity>
