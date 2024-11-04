@@ -76,7 +76,7 @@ const styles = StyleSheet.create({
     position: 'absolute',
     flexDirection: 'row',
     end: 'auto',
-    top: '90%',
+    top: '95%',
   },
 });
 

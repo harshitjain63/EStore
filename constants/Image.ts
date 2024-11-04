@@ -40,6 +40,7 @@ type ImageProp = {
   homedrawer: ImageSourcePropType;
   contactsdrawer: ImageSourcePropType;
   map: ImageSourcePropType;
+  truecaller: ImageSourcePropType;
 };
 export const Images: ImageProp = {
   ushericon: require('../assets/usher.png'),
@@ -80,4 +81,5 @@ export const Images: ImageProp = {
   contactsdrawer: require('../assets/Drawericon/telephone.png'),
   homedrawer: require('../assets/Drawericon/home.png'),
   map: require('../assets/street-map.png'),
+  truecaller: require('../assets/audio.png'),
 };

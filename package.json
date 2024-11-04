@@ -13,6 +13,7 @@
     "prepare": "husky"
   },
   "dependencies": {
+    "@kartikbhalla/react-native-truecaller": "^0.1.12",
     "@ptomasroos/react-native-multi-slider": "^2.2.2",
     "@react-native-community/blur": "^4.4.1",
     "@react-native-firebase/app": "^21.2.0",
@@ -23,6 +24,7 @@
     "@react-navigation/native": "^6.1.18",
     "@react-navigation/native-stack": "^6.11.0",
     "@reduxjs/toolkit": "^2.3.0",
+    "axios": "^1.7.7",
     "react": "18.3.1",
     "react-native": "0.75.4",
     "react-native-app-intro-slider": "^4.0.4",

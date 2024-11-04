@@ -18,9 +18,48 @@ import {AccessToken, LoginManager} from 'react-native-fbsdk-next';
 import {useAppDispatch} from '../../redux/hooks';
 import {setUser} from '../../redux/Slice/userSlice';
 import {SignInScreenProp} from '../../Screens/SignInScreen';
+import {
+  useTruecaller,
+  TRUECALLER_ANDROID_CUSTOMIZATIONS,
+} from '@kartikbhalla/react-native-truecaller';
 
 const FacebookGoogle = ({navigation}: SignInScreenProp) => {
   const dispatch = useAppDispatch();
+
+  const {
+    initializeTruecaller,
+    openTruecallerModal,
+    user,
+    isTruecallerSupported,
+  } = useTruecaller({
+    androidButtonColor: '#FF0000',
+    androidButtonStyle: TRUECALLER_ANDROID_CUSTOMIZATIONS.BUTTON_STYLES.ROUND,
+    androidButtonText: TRUECALLER_ANDROID_CUSTOMIZATIONS.BUTTON_TEXTS.CONTINUE,
+    androidButtonTextColor: '#FFFFFF',
+    androidClientId: 'jjjn2jlevwdyh4imnvtxc2pfrnshswyrhjnrbs5wgym',
+    androidConsentHeading:
+      TRUECALLER_ANDROID_CUSTOMIZATIONS.CONSENT_HEADING_TEXTS.LOG_IN_TO,
+    androidFooterButtonText:
+      TRUECALLER_ANDROID_CUSTOMIZATIONS.FOOTER_BUTTON_TEXTS.SKIP,
+  });
+
+  useEffect(() => {
+    initializeTruecaller();
+  }, []);
+
+  const handleTrueCaller = () => {
+    openTruecallerModal();
+  };
+
+  console.log(isTruecallerSupported);
+
+  useEffect(() => {
+    if (user) {
+      Alert.alert('TrueCaller Login Success', JSON.stringify(user));
+    } else {
+      Alert.alert('TrueCaller Login Failed', 'No user data available');
+    }
+  }, [user]);
 
   useEffect(() => {
     GoogleSignin.configure({
@@ -108,6 +147,23 @@ const FacebookGoogle = ({navigation}: SignInScreenProp) => {
       <TouchableOpacity style={styles.google} onPress={signInWithGoogle}>
         <Image source={Images.googleicon} style={styles.img} />
         <Text style={styles.fbtxt}>Sign In with Google</Text>
+      </TouchableOpacity>
+      <TouchableOpacity
+        onPress={() => handleTrueCaller()}
+        style={{
+          backgroundColor: 'white',
+          width: '80%',
+          flexDirection: 'row',
+          borderRadius: 25,
+          borderWidth: 1,
+          top: '87.1%',
+          position: 'absolute',
+          height: '6%',
+          alignSelf: 'center',
+          borderColor: '#DDDDDD',
+        }}>
+        <Image source={Images.truecaller} style={styles.img} />
+        <Text style={styles.fbtxt}>Sign In with TrueCaller</Text>
       </TouchableOpacity>
     </View>
   );
