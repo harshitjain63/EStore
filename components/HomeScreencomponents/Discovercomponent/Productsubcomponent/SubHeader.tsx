@@ -4,6 +4,7 @@ import Result from '../searchresultsubcomponent/Result';
 import {Images} from '../../../../constants/Image';
 import {useAppDispatch} from '../../../../redux/hooks';
 import {addItemToCart} from '../../../../redux/Slice/CartSlice';
+import {AppEventsLogger} from 'react-native-fbsdk-next';
 
 const SubHeader = () => {
   const dispatch = useAppDispatch();
@@ -20,8 +21,22 @@ const SubHeader = () => {
         price: '15',
         quantity: quantity,
       }),
+      handleAddToCartEvent('Red Dress', 25),
     );
   };
+
+  const handleAddToCartEvent = (
+    itemName: string,
+    itemPrice: number,
+    currency = 'USD',
+  ) => {
+    AppEventsLogger.logEvent('AddToCartHarshit', {
+      item_name: itemName,
+      price: itemPrice,
+      currency: currency,
+    });
+  };
+
   return (
     <View style={styles.container}>
       <View style={styles.row}>
