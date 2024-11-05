@@ -14,7 +14,11 @@ import {
   isSuccessResponse,
   statusCodes,
 } from '@react-native-google-signin/google-signin';
-import {AccessToken, LoginManager} from 'react-native-fbsdk-next';
+import {
+  AccessToken,
+  AppEventsLogger,
+  LoginManager,
+} from 'react-native-fbsdk-next';
 import {useAppDispatch} from '../../redux/hooks';
 import {setUser} from '../../redux/Slice/userSlice';
 import {SignInScreenProp} from '../../Screens/SignInScreen';
@@ -25,6 +29,12 @@ import {
 
 const FacebookGoogle = ({navigation}: SignInScreenProp) => {
   const dispatch = useAppDispatch();
+
+  const handleRegisterEvent = () => {
+    AppEventsLogger.logEvent(AppEventsLogger.AppEvents.CompletedRegistration, {
+      [AppEventsLogger.AppEventParams.RegistrationMethod]: 'email',
+    });
+  };
 
   const {
     initializeTruecaller,
@@ -117,6 +127,7 @@ const FacebookGoogle = ({navigation}: SignInScreenProp) => {
           const userInfo = await userInfoResponse.json();
 
           console.log('User Info:', userInfo);
+          handleRegisterEvent();
 
           dispatch(
             setUser({
