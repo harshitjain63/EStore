@@ -107,6 +107,12 @@ android {
             proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
         }
     }
+    compileOptions {
+
+         sourceCompatibility JavaVersion.VERSION_1_8
+         targetCompatibility JavaVersion.VERSION_1_8
+
+    }
 }
 
 dependencies {
@@ -116,6 +122,7 @@ dependencies {
     implementation 'com.google.firebase:firebase-analytics'
     // implementation 'com.facebook.android:facebook-android-sdk:[8,9)' 
     implementation 'com.facebook.android:facebook-android-sdk:12.3.0'
+    implementation "com.truecaller.android.sdk:truecaller-sdk:3.0.0"
     
 
     if (hermesEnabled.toBoolean()) {

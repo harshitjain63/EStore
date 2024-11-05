@@ -23,9 +23,13 @@ import {useAppDispatch} from '../../redux/hooks';
 import {setUser} from '../../redux/Slice/userSlice';
 import {SignInScreenProp} from '../../Screens/SignInScreen';
 import {
-  useTruecaller,
   TRUECALLER_ANDROID_CUSTOMIZATIONS,
-} from '@kartikbhalla/react-native-truecaller';
+  useTruecaller,
+} from '../TrueCallerComponents/useTruecaller';
+// import {
+//   useTruecaller,
+//   TRUECALLER_ANDROID_CUSTOMIZATIONS,
+// } from '@kartikbhalla/react-native-truecaller';
 
 const FacebookGoogle = ({navigation}: SignInScreenProp) => {
   const dispatch = useAppDispatch();
@@ -65,6 +69,7 @@ const FacebookGoogle = ({navigation}: SignInScreenProp) => {
 
   useEffect(() => {
     if (user) {
+      console.log('profile pic', user);
       Alert.alert('TrueCaller Login Success', JSON.stringify(user));
     } else {
       Alert.alert('TrueCaller Login Failed', 'No user data available');
