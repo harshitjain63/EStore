@@ -1,9 +1,29 @@
-import {View, Text, Image, StyleSheet, TouchableOpacity} from 'react-native';
+import {
+  View,
+  Text,
+  Image,
+  StyleSheet,
+  TouchableOpacity,
+  Share,
+  Button,
+} from 'react-native';
 import React from 'react';
 import {Images} from '../../../../constants/Image';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const Header = ({name}: {name: any}) => {
+  const handleShare = async () => {
+    const url = `estore://category/${name}`;
+    try {
+      await Share.share({
+        title: `Check out the ${name} category on our app!`,
+        message: `Explore our ${name} collection: ${url}`,
+        url,
+      });
+    } catch (error) {
+      console.error('Error sharing:', error);
+    }
+  };
   return (
     <View style={styles.container}>
       <View style={styles.header}>
@@ -15,6 +35,9 @@ const Header = ({name}: {name: any}) => {
           <Image style={styles.img} source={Images.searchicon} />
         </TouchableOpacity>
       </View>
+
+      <Button title="share" onPress={() => handleShare()} />
+
       <Text style={styles.offertxt}>Up to 20% Off</Text>
       <Text style={styles.nametxt}>{name} Collection</Text>
     </View>

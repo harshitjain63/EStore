@@ -1,6 +1,14 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import React, {useState} from 'react';
-import {View, Text, TouchableOpacity, StyleSheet, Image} from 'react-native';
+import React, {useEffect, useState} from 'react';
+import {
+  View,
+  Text,
+  TouchableOpacity,
+  StyleSheet,
+  Image,
+  Share,
+  Button,
+} from 'react-native';
 import {Images} from '../../../../constants/Image';
 
 interface Product {
@@ -11,11 +19,33 @@ interface Product {
 
 interface ProductNavigatorProps {
   products: Product[];
+  id: number;
 }
 
-const ProductNavigator = ({products}: ProductNavigatorProps) => {
+const ProductNavigator = ({products, id}: ProductNavigatorProps) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [selectedSize, setSelectedSize] = useState<string | null>(null);
+
+  useEffect(() => {
+    console.log(id);
+    console.log(products);
+    if (id) {
+      setCurrentIndex(id - 1);
+    }
+  }, [id]);
+
+  const handleShare = async () => {
+    const url = `"estore://bottomnav/drawer/category/product/${id}`;
+    try {
+      await Share.share({
+        title: `Check out the ${products[currentIndex].product} product on our app!`,
+        message: `Buy Our Product: ${url}`,
+        url,
+      });
+    } catch (error) {
+      console.error('Error sharing:', error);
+    }
+  };
 
   //   const nextProduct = () => {
   //     if (currentIndex < products.length - 1) {
@@ -89,6 +119,7 @@ const ProductNavigator = ({products}: ProductNavigatorProps) => {
       <View style={styles.productInfo}>
         <Text style={styles.productName}>{products[currentIndex].product}</Text>
         <Text style={styles.productPrice}>{products[currentIndex].price}</Text>
+        <Button title="Share" onPress={() => handleShare()} />
       </View>
 
       {/* <View style={styles.buttonContainer}>

@@ -11,6 +11,8 @@ import Filter from '../components/HomeScreencomponents/Discovercomponent/Filter'
 import MainTabNavigator from './BottomNavigation';
 import {Provider} from 'react-redux';
 import {store} from '../redux/Store';
+import SelectedCategory from '../components/HomeScreencomponents/Discovercomponent/SelectedCategory';
+import SelectedProduct from '../components/HomeScreencomponents/Discovercomponent/SelectedProduct';
 
 export type RootStackParams = {
   Home: undefined;
@@ -20,14 +22,42 @@ export type RootStackParams = {
   Welcome: undefined;
   Filter: undefined;
   BottomNavigation: undefined;
+  selectedcategory: {name: string};
+  selectedproduct: {id: number; product: string; price: string};
 };
 
 const stack = createNativeStackNavigator<RootStackParams>();
 
+const linking = {
+  prefixes: ['estore://'],
+  config: {
+    screens: {
+      selectedcategory: 'category/:name',
+
+      BottomNavigation: {
+        path: 'bottomnav',
+        screens: {
+          Drawer: {
+            path: 'drawer',
+            screens: {
+              categories: {
+                path: 'category',
+                screens: {
+                  selectedproduct: 'product/:id',
+                },
+              },
+            },
+          },
+        },
+      },
+    },
+  },
+};
+
 const StackNavigator = () => {
   return (
     <Provider store={store}>
-      <NavigationContainer>
+      <NavigationContainer linking={linking}>
         <StatusBar translucent={true} backgroundColor={'transparent'} />
         <stack.Navigator
           screenOptions={{
@@ -70,6 +100,22 @@ const StackNavigator = () => {
             }}
             name="Filter"
             component={Filter}
+          />
+
+          <stack.Screen
+            options={{
+              headerShown: false,
+            }}
+            name="selectedcategory"
+            component={SelectedCategory}
+          />
+
+          <stack.Screen
+            options={{
+              headerShown: false,
+            }}
+            name="selectedproduct"
+            component={SelectedProduct}
           />
         </stack.Navigator>
       </NavigationContainer>

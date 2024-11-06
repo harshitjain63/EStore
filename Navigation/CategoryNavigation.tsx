@@ -8,7 +8,7 @@ import Review from '../components/HomeScreencomponents/Discovercomponent/Review'
 export type CategoryNavParams = {
   category: undefined;
   selectedcategory: {name: string};
-  selectedproduct: {name: string};
+  selectedproduct: {name: string; id?: number};
   review: {name: string};
 };
 

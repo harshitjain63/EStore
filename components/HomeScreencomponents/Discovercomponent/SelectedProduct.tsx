@@ -30,7 +30,7 @@ const products = [
 
 const SelectedProduct = () => {
   const route = useRoute<RouteProp<CategoryNavParams, 'selectedproduct'>>();
-  const {name} = route.params;
+  const {name, id} = route.params;
 
   const navigation = useNavigation<NavigationProp<CategoryNavParams>>();
   const {height: Height} = Dimensions.get('window');
@@ -110,7 +110,7 @@ const SelectedProduct = () => {
           </TouchableOpacity>
         </View>
         <Animated.View style={{opacity: headerOpacity}}>
-          <ProductNavigator products={products} />
+          <ProductNavigator products={products} id={id ? id : 1} />
         </Animated.View>
       </Animated.View>
       <Animated.ScrollView
