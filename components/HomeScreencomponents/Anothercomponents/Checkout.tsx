@@ -15,6 +15,14 @@ import Summary from './Checkoutsubcomponents/Summary';
 import StepIndicator from 'react-native-step-indicator';
 import {useNavigation, NavigationProp} from '@react-navigation/native';
 import {AnotherNavParams} from '../../../Navigation/AnotherNavigation';
+import {AppEventsLogger} from 'react-native-fbsdk-next';
+
+type ProductItem = {
+  id: string;
+  image: string;
+  name: string;
+  price: string;
+};
 
 const steps = [
   {id: 1, label: 'Address'},
@@ -39,15 +47,44 @@ const customStyles = {
 };
 
 const Checkout = () => {
+  const sampleDatas = [
+    {
+      id: '1',
+      image: 'https://via.placeholder.com/150',
+      name: 'White Top',
+      price: '$15',
+    },
+    {
+      id: '2',
+      image: 'https://via.placeholder.com/150',
+      name: 'Black Shirt',
+      price: '$20',
+    },
+  ];
+
   const startingimage = Images.menuicon;
   const text = 'Checkout';
   const endingimage = Images.searchicon;
   const [step, setStep] = useState<number>(0);
   const navigation = useNavigation<NavigationProp<AnotherNavParams>>();
 
+  const handlePay = (
+    shippingAddress: string,
+    paymentMethod: string,
+    items: ProductItem[],
+  ) => {
+    AppEventsLogger.logEvent('Payment_Type_Harshit', {
+      shipping_Address: shippingAddress,
+      payment_Method: paymentMethod,
+      items: JSON.stringify(items),
+    });
+    navigation.navigate('Orderaccepted');
+  };
+
   const handleNext = () => {
     if (step === 2) {
-      navigation.navigate('Orderaccepted');
+      handlePay('Gola Gokaran Nath', 'Debit Card', sampleDatas);
+      console.log('paybuttonhit');
     } else if (step < 2) {
       setStep(step + 1);
     }

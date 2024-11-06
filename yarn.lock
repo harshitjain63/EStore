@@ -1978,11 +1978,6 @@
     "@jridgewell/resolve-uri" "^3.1.0"
     "@jridgewell/sourcemap-codec" "^1.4.14"
 
-"@kartikbhalla/react-native-truecaller@^0.1.12":
-  version "0.1.12"
-  resolved "https://registry.npmjs.org/@kartikbhalla/react-native-truecaller/-/react-native-truecaller-0.1.12.tgz"
-  integrity sha512-QP9daYYrbJhNzdgpNq/DJsHwggSM2vJkIl9qgVfhEUx2x3n639G/V/YohM2iiOkFsSzQyfmFEypS+XIF3XDmYw==
-
 "@nicolo-ribaudo/eslint-scope-5-internals@5.1.1-v1":
   version "5.1.1-v1"
   resolved "https://registry.npmjs.org/@nicolo-ribaudo/eslint-scope-5-internals/-/eslint-scope-5-internals-5.1.1-v1.tgz"
