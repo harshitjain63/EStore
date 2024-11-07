@@ -81,7 +81,7 @@ const SelectedProduct = () => {
     itemPrice: number,
     currency = 'USD',
   ) => {
-    AppEventsLogger.logEvent('AddToCartHarshit', {
+    AppEventsLogger.logEvent('AddToCartHarshit', 1, {
       item_name: itemName,
       price: itemPrice,
       currency: currency,
