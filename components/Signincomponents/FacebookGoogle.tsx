@@ -26,10 +26,7 @@ import {
   TRUECALLER_ANDROID_CUSTOMIZATIONS,
   useTruecaller,
 } from '../TrueCallerComponents/useTruecaller';
-// import {
-//   useTruecaller,
-//   TRUECALLER_ANDROID_CUSTOMIZATIONS,
-// } from '@kartikbhalla/react-native-truecaller';
+import LogRocket from '@logrocket/react-native';
 
 const FacebookGoogle = ({navigation}: SignInScreenProp) => {
   const dispatch = useAppDispatch();
@@ -133,6 +130,12 @@ const FacebookGoogle = ({navigation}: SignInScreenProp) => {
 
           console.log('User Info:', userInfo);
           handleRegisterEvent();
+          // LogRocket Event
+          LogRocket.track('Registered through facebook', {
+            name: userInfo.name,
+            email: userInfo.email,
+            photo: userInfo.picture.data.url,
+          });
 
           dispatch(
             setUser({

@@ -22,7 +22,7 @@ if (Platform.OS === 'ios' || Platform.OS === 'android') {
 const App = () => {
   useEffect(() => {
     LogRocket.init('iwbft5/estore');
-    console.log('identify log rocket user', LogRocket.identify('harshit'));
+    console.log('identify log rocket user', LogRocket.identify('harshit Jain'));
     OneSignal.Debug.setLogLevel(LogLevel.Verbose);
     OneSignal.initialize('ea616c69-8c12-464f-bfaa-9ddcc0215d00');
     OneSignal.Notifications.requestPermission(true);
