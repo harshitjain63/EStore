@@ -7,8 +7,8 @@ export interface BodyProps {
   name: string;
   category: string;
   price: string;
-  id: string;
-  quantity: number;
+  id?: string;
+  quantity?: number;
 }
 
 const Body = ({image, name, category, price}: BodyProps) => {

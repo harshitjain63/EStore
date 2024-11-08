@@ -29,7 +29,7 @@ export type RootStackParams = {
 const stack = createNativeStackNavigator<RootStackParams>();
 
 const linking = {
-  prefixes: ['estore://'],
+  prefixes: ['estore://', 'https://estore.com/', 'http://estore.com/'],
   config: {
     screens: {
       selectedcategory: 'category/:name',

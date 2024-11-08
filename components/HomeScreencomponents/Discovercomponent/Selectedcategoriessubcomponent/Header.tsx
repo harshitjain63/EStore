@@ -13,7 +13,7 @@ import {Images} from '../../../../constants/Image';
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const Header = ({name}: {name: any}) => {
   const handleShare = async () => {
-    const url = `estore://category/${name}`;
+    const url = `https://estore.com/category/${name}`;
     try {
       await Share.share({
         title: `Check out the ${name} category on our app!`,

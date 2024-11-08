@@ -35,7 +35,7 @@ const ProductNavigator = ({products, id}: ProductNavigatorProps) => {
   }, [id]);
 
   const handleShare = async () => {
-    const url = `"estore://bottomnav/drawer/category/product/${id}`;
+    const url = `"https://estore.com/bottomnav/drawer/category/product/${id}`;
     try {
       await Share.share({
         title: `Check out the ${products[currentIndex].product} product on our app!`,
