@@ -7,6 +7,7 @@ import {Image, StyleSheet, Text, View} from 'react-native';
 import DrawerHeader from '../components/DrawerDesign';
 import Contacts from '../components/HomeScreencomponents/Contacts';
 import {Images} from '../constants/Image';
+import Another from '../components/HomeScreencomponents/Another';
 
 const Drawer = createDrawerNavigator<DrawerNavprop>();
 
@@ -14,6 +15,7 @@ export type DrawerNavprop = {
   Discover: undefined;
   categories: undefined;
   contacts: undefined;
+  cart: undefined;
 };
 
 const DrawerNavigation = () => {
@@ -76,6 +78,22 @@ const DrawerNavigation = () => {
               </View>
             ),
             drawerLabel: () => <Text style={styles.txt}>Category</Text>,
+          }}
+        />
+        <Drawer.Screen
+          name="cart"
+          component={Another}
+          options={{
+            headerShown: false,
+            drawerIcon: () => (
+              <View>
+                <Image
+                  source={Images.categorydrawer}
+                  style={{height: 20, width: 20, tintColor: '#FFF'}}
+                />
+              </View>
+            ),
+            drawerLabel: () => <Text style={styles.txt}>Cart</Text>,
           }}
         />
       </Drawer.Navigator>

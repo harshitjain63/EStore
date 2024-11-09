@@ -5,12 +5,14 @@ import Filter from '../components/HomeScreencomponents/Discovercomponent/Filter'
 import Discover from '../components/HomeScreencomponents/Discover';
 import Search from '../components/HomeScreencomponents/Discovercomponent/Search';
 import SearchResult from '../components/HomeScreencomponents/Discovercomponent/SearchResult';
+import Another from '../components/HomeScreencomponents/Another';
 
 export type NewNavParams = {
   DiscoverHome: undefined;
   Search: undefined;
   Searchresult: undefined;
   Filter: undefined;
+  cart: undefined;
 };
 
 const stack = createNativeStackNavigator<NewNavParams>();
@@ -44,6 +46,14 @@ const NewNavigation = () => {
         }}
         name="Filter"
         component={Filter}
+      />
+
+      <stack.Screen
+        options={{
+          headerShown: false,
+        }}
+        name="cart"
+        component={Another}
       />
     </stack.Navigator>
   );
